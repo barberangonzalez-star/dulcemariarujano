@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dulce María Rujano — Comunicadora Estratégica</title>
+  <title>Dulce María Rujano</title>
+  <meta name="description" content="Dulce María Rujano — Comunicación estratégica para tu marca y asesoría inmobiliaria para comprar, vender o alquilar tu vivienda." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
@@ -14,706 +15,166 @@
       --cream:      #FAF7F2;
       --ivory:      #F4EFE6;
       --blush:      #EDD9C8;
-      --rose:       #D9B8A3;
       --sage:       #C8CEBD;
       --warm-grey:  #9E948A;
       --text:       #3A3330;
       --text-light: #7A6F68;
       --accent:     #B8906E;
+      --olive:      #6F7C5E;
       --white:      #FFFFFF;
-      --wa-green:   #25D366;
       --shadow:     0 4px 40px rgba(58,51,48,.07);
-      --radius:     18px;
+      --radius:     22px;
     }
-
-    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--cream);
       color: var(--text);
+      min-height: 100svh;
+      display: flex; flex-direction: column;
       overflow-x: hidden;
     }
 
-    /* ── NAV ───────────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 22px 6vw;
-      background: rgba(250,247,242,.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(216,184,163,.2);
+    /* decorative blobs */
+    body::before, body::after {
+      content: ''; position: fixed; z-index: -1; border-radius: 50%;
+      filter: blur(10px); opacity: .5;
     }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem; font-weight: 400; letter-spacing: .04em;
-      color: var(--text);
-    }
-    .nav-logo span { color: var(--accent); font-style: italic; }
-    nav ul { list-style: none; display: flex; gap: 36px; }
-    nav ul a { font-size: .82rem; text-decoration: none; color: var(--text-light); letter-spacing: .08em; text-transform: uppercase; transition: color .25s; }
-    nav ul a:hover { color: var(--accent); }
-    .nav-cta {
-      background: var(--text); color: var(--cream);
-      padding: 10px 22px; border-radius: 50px;
-      font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
-      text-decoration: none; transition: background .25s, transform .2s;
-    }
-    .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+    body::before { width: 420px; height: 420px; background: var(--blush); top: -140px; left: -120px; }
+    body::after  { width: 360px; height: 360px; background: var(--sage);  bottom: -140px; right: -100px; }
 
-    /* ── HERO ──────────────────────────────────────────── */
-    .hero {
-      min-height: 100svh;
-      display: grid; grid-template-columns: 1fr 1fr;
-      align-items: center; gap: 0;
-      padding: 120px 6vw 80px;
+    main {
+      flex: 1;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 64px 6vw 48px; text-align: center;
     }
-    .hero-text { padding-right: 6vw; }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--ivory); border: 1px solid var(--blush);
-      border-radius: 50px; padding: 6px 16px;
-      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--warm-grey); margin-bottom: 28px;
-    }
-    .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 5.5vw, 5.2rem);
-      font-weight: 300; line-height: 1.08; letter-spacing: -.01em;
-      margin-bottom: 24px;
-    }
-    .hero h1 em { font-style: italic; color: var(--accent); }
-    .hero-desc {
-      font-size: 1rem; line-height: 1.7; color: var(--text-light);
-      max-width: 440px; margin-bottom: 44px;
-    }
-    .hero-btns { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--wa-green); color: #fff;
-      padding: 15px 30px; border-radius: 50px;
-      font-size: .88rem; font-weight: 500; text-decoration: none;
-      letter-spacing: .02em; transition: transform .2s, box-shadow .2s;
-      box-shadow: 0 8px 28px rgba(37,211,102,.28);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(37,211,102,.36); }
-    .btn-primary svg { width: 20px; height: 20px; flex-shrink: 0; }
-    .btn-secondary {
-      font-size: .82rem; color: var(--text-light); text-decoration: none;
-      border-bottom: 1px solid var(--blush); padding-bottom: 2px;
-      letter-spacing: .06em; transition: color .2s, border-color .2s;
-    }
-    .btn-secondary:hover { color: var(--accent); border-color: var(--accent); }
 
-    /* hero image */
-    .hero-visual {
-      position: relative; display: flex; justify-content: center;
-    }
-    .hero-img-frame {
-      position: relative; width: min(420px, 90%);
-    }
-    .hero-img-blob {
-      width: 100%; aspect-ratio: 4/5;
-      background: var(--ivory);
-      border-radius: 52% 48% 60% 40% / 50% 44% 56% 50%;
-      overflow: hidden;
-      border: 3px solid var(--blush);
+    .avatar {
+      width: 112px; height: 112px; border-radius: 50%;
+      background: var(--ivory); border: 3px solid var(--blush);
       box-shadow: var(--shadow);
       display: flex; align-items: center; justify-content: center;
+      overflow: hidden; margin-bottom: 28px;
+      font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: var(--accent);
     }
-    .hero-img-blob img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-img-placeholder {
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      color: var(--warm-grey); font-size: .82rem; text-align: center; padding: 20px;
-    }
-    .hero-img-placeholder svg { width: 48px; height: 48px; opacity: .4; }
-    .hero-badge {
-      position: absolute; bottom: 32px; left: -20px;
-      background: var(--white); border-radius: 14px;
-      padding: 14px 18px; box-shadow: var(--shadow);
-      border: 1px solid var(--ivory);
-    }
-    .hero-badge-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.7rem; font-weight: 500; color: var(--text);
-      line-height: 1; display: block;
-    }
-    .hero-badge-label { font-size: .7rem; color: var(--text-light); letter-spacing: .08em; text-transform: uppercase; }
-    .hero-badge2 {
-      position: absolute; top: 28px; right: -20px;
-      background: var(--accent); border-radius: 14px;
-      padding: 14px 18px; box-shadow: 0 8px 28px rgba(184,144,110,.3);
-    }
-    .hero-badge2 .hero-badge-num { color: #fff; }
-    .hero-badge2 .hero-badge-label { color: rgba(255,255,255,.75); }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* stats strip */
-    .stats {
-      background: var(--ivory); border-top: 1px solid var(--blush); border-bottom: 1px solid var(--blush);
-      padding: 32px 6vw;
-      display: flex; align-items: center; justify-content: space-around; gap: 24px;
-      flex-wrap: wrap;
+    .eyebrow {
+      font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--warm-grey); margin-bottom: 14px;
     }
-    .stat { text-align: center; }
-    .stat-num {
+    h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.4rem; font-weight: 500; color: var(--text); display: block; line-height: 1;
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
+      font-weight: 300; line-height: 1.05; margin-bottom: 16px;
     }
-    .stat-label { font-size: .74rem; color: var(--text-light); letter-spacing: .1em; text-transform: uppercase; margin-top: 4px; }
-    .stat-div { width: 1px; height: 44px; background: var(--blush); }
+    h1 em { font-style: italic; color: var(--accent); }
+    .lead {
+      font-size: 1rem; line-height: 1.7; color: var(--text-light);
+      max-width: 480px; margin-bottom: 52px;
+    }
 
-    /* ── SECTION UTILITY ───────────────────────────────── */
-    section { padding: 100px 6vw; }
-    .section-tag {
-      display: inline-block; font-size: .7rem; letter-spacing: .16em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 14px;
+    .choices {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 340px));
+      gap: 24px; width: 100%; justify-content: center;
     }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300; line-height: 1.15; margin-bottom: 18px;
-    }
-    .section-title em { font-style: italic; color: var(--accent); }
-    .section-desc { font-size: .95rem; line-height: 1.75; color: var(--text-light); max-width: 520px; }
-
-    /* ── SERVICES ──────────────────────────────────────── */
-    #servicios { background: var(--cream); }
-    .services-header { text-align: center; margin-bottom: 64px; }
-    .services-header .section-desc { margin: 0 auto; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .service-card {
-      background: var(--white); border-radius: var(--radius);
-      padding: 36px 30px; border: 1px solid var(--ivory);
-      transition: transform .3s, box-shadow .3s;
+    .choice {
       position: relative; overflow: hidden;
+      display: flex; flex-direction: column; align-items: flex-start; text-align: left;
+      background: var(--white); border: 1px solid var(--ivory);
+      border-radius: var(--radius); padding: 36px 32px 32px;
+      text-decoration: none; color: var(--text);
+      box-shadow: var(--shadow);
+      transition: transform .3s, box-shadow .3s, border-color .3s;
     }
-    .service-card::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 3px; background: linear-gradient(90deg, var(--blush), var(--accent));
-      transform: scaleX(0); transform-origin: left; transition: transform .35s;
+    .choice::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
+      background: var(--c); transform: scaleX(0); transform-origin: left; transition: transform .35s;
     }
-    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-    .service-card:hover::after { transform: scaleX(1); }
-    .service-icon {
-      width: 52px; height: 52px; border-radius: 14px;
-      background: var(--ivory); display: flex; align-items: center; justify-content: center;
-      margin-bottom: 22px; font-size: 1.5rem;
-    }
-    .service-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 500; margin-bottom: 10px;
-    }
-    .service-card p { font-size: .87rem; line-height: 1.7; color: var(--text-light); }
+    .choice:hover, .choice:focus-visible { transform: translateY(-6px); box-shadow: 0 14px 50px rgba(58,51,48,.12); border-color: var(--c-soft); }
+    .choice:hover::after, .choice:focus-visible::after { transform: scaleX(1); }
+    .choice:focus-visible { outline: 2px solid var(--c); outline-offset: 3px; }
+    .choice.marca     { --c: var(--accent); --c-soft: var(--blush); }
+    .choice.inmuebles { --c: var(--olive);  --c-soft: var(--sage); }
 
-    /* ── CLIENTES CARRUSEL ─────────────────────────────── */
-    #clientes { background: var(--ivory); }
-    .clients-header { text-align: center; margin-bottom: 56px; }
-    .carousel-wrap { position: relative; }
-    .carousel {
-      display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory;
-      scrollbar-width: none; padding-bottom: 8px;
-      scroll-padding-left: 6vw;
-    }
-    .carousel::-webkit-scrollbar { display: none; }
-    .client-card {
-      flex: 0 0 260px; scroll-snap-align: start;
-      background: var(--white); border-radius: var(--radius);
-      padding: 32px 26px; border: 1px solid var(--blush);
-      display: flex; flex-direction: column; align-items: center; gap: 16px;
-      transition: transform .3s;
-    }
-    .client-card:hover { transform: translateY(-4px); }
-    .client-logo {
-      width: 72px; height: 72px; border-radius: 50%;
-      background: var(--ivory);
+    .choice-icon {
+      width: 56px; height: 56px; border-radius: 16px;
       display: flex; align-items: center; justify-content: center;
+      background: var(--c-soft); color: var(--c); margin-bottom: 24px;
+    }
+    .choice-icon svg { width: 26px; height: 26px; }
+    .choice-tag { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--c); margin-bottom: 8px; }
+    .choice h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-weight: 500; color: var(--accent);
-      border: 2px solid var(--blush);
+      font-size: 1.75rem; font-weight: 400; line-height: 1.15; margin-bottom: 12px;
     }
-    .client-name { font-weight: 500; font-size: .92rem; text-align: center; }
-    .client-sector { font-size: .76rem; color: var(--text-light); letter-spacing: .06em; text-transform: uppercase; }
-    .carousel-controls { display: flex; justify-content: center; gap: 12px; margin-top: 36px; }
-    .carousel-btn {
-      width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--blush);
-      background: var(--white); cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text); transition: background .2s, border-color .2s, transform .2s;
+    .choice p { font-size: .88rem; line-height: 1.65; color: var(--text-light); margin-bottom: 26px; }
+    .choice-go {
+      margin-top: auto; display: inline-flex; align-items: center; gap: 8px;
+      font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c); font-weight: 500;
     }
-    .carousel-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: scale(1.05); }
+    .choice-go svg { width: 16px; height: 16px; transition: transform .25s; }
+    .choice:hover .choice-go svg { transform: translateX(4px); }
 
-    /* ── TESTIMONIOS ───────────────────────────────────── */
-    #testimonios { background: var(--cream); }
-    .testimonials-header { text-align: center; margin-bottom: 64px; }
-    .testimonials-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-    .testimonial-card {
-      background: var(--white); border-radius: var(--radius);
-      padding: 36px 30px; border: 1px solid var(--ivory);
-      position: relative;
-    }
-    .testimonial-card::before {
-      content: '"';
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 6rem; line-height: .7;
-      color: var(--blush); position: absolute; top: 20px; left: 26px;
-      pointer-events: none;
-    }
-    .testimonial-text {
-      font-size: .92rem; line-height: 1.8; color: var(--text-light);
-      padding-top: 40px; margin-bottom: 24px;
-      font-style: italic;
-    }
-    .testimonial-author { display: flex; align-items: center; gap: 14px; }
-    .author-avatar {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--ivory); border: 2px solid var(--blush);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem; font-weight: 500; color: var(--accent);
-      flex-shrink: 0;
-    }
-    .author-name { font-weight: 500; font-size: .88rem; }
-    .author-role { font-size: .76rem; color: var(--text-light); }
-    .stars { color: var(--accent); font-size: .9rem; margin-bottom: 4px; }
-
-    /* ── SOBRE DULCE ───────────────────────────────────── */
-    #sobre { background: var(--ivory); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .about-visual { position: relative; }
-    .about-img {
-      width: 100%; aspect-ratio: 3/4;
-      background: var(--blush);
-      border-radius: 40% 60% 50% 50% / 30% 30% 70% 70%;
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .about-img img { width: 100%; height: 100%; object-fit: cover; }
-    .about-img-placeholder {
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      color: var(--warm-grey); font-size: .82rem;
-    }
-    .about-img-placeholder svg { width: 48px; height: 48px; opacity: .4; }
-    .about-deco {
-      position: absolute; top: -16px; right: -16px;
-      width: 100px; height: 100px;
-      border-radius: 50%; background: var(--sage); opacity: .4;
-    }
-    .about-text .section-tag { display: block; }
-    .about-text p { font-size: .93rem; line-height: 1.8; color: var(--text-light); margin-bottom: 16px; }
-    .about-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
-    .about-list li {
-      display: flex; align-items: center; gap: 12px;
-      font-size: .88rem; color: var(--text);
-    }
-    .about-list li::before {
-      content: ''; width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent); flex-shrink: 0;
-    }
-
-    /* ── CTA FINAL ─────────────────────────────────────── */
-    .cta-section {
-      background: var(--text); padding: 100px 6vw;
-      text-align: center;
-    }
-    .cta-section .section-tag { color: var(--blush); }
-    .cta-section .section-title { color: var(--cream); }
-    .cta-section .section-title em { color: var(--blush); }
-    .cta-desc { color: rgba(250,247,242,.65); font-size: .95rem; line-height: 1.7; max-width: 500px; margin: 0 auto 44px; }
-    .btn-wa-lg {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: var(--wa-green); color: #fff;
-      padding: 18px 40px; border-radius: 50px;
-      font-size: 1rem; font-weight: 500; text-decoration: none;
-      letter-spacing: .02em; transition: transform .2s, box-shadow .2s;
-      box-shadow: 0 12px 40px rgba(37,211,102,.35);
-    }
-    .btn-wa-lg:hover { transform: translateY(-3px); box-shadow: 0 18px 50px rgba(37,211,102,.45); }
-    .btn-wa-lg svg { width: 22px; height: 22px; }
-
-    /* ── FOOTER ────────────────────────────────────────── */
     footer {
-      background: var(--text); border-top: 1px solid rgba(255,255,255,.06);
-      padding: 36px 6vw;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
+      text-align: center; padding: 24px 6vw 32px;
+      font-size: .76rem; color: var(--warm-grey);
     }
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem; color: var(--cream); letter-spacing: .04em;
-    }
-    .footer-logo span { color: var(--blush); font-style: italic; }
-    footer p { font-size: .76rem; color: rgba(250,247,242,.4); }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: .76rem; color: rgba(250,247,242,.45); text-decoration: none; transition: color .2s; }
-    .footer-links a:hover { color: var(--blush); }
+    footer a { color: var(--text-light); text-decoration: none; border-bottom: 1px solid var(--blush); }
 
-    /* ── FLOATING WA BTN ───────────────────────────────── */
-    .wa-float {
-      position: fixed; bottom: 30px; right: 30px; z-index: 200;
-      width: 58px; height: 58px; border-radius: 50%;
-      background: var(--wa-green); color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 30px rgba(37,211,102,.45);
-      text-decoration: none; transition: transform .2s, box-shadow .2s;
-    }
-    .wa-float:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(37,211,102,.55); }
-    .wa-float svg { width: 26px; height: 26px; }
-    .wa-float::before {
-      content: ''; position: absolute; inset: -4px; border-radius: 50%;
-      border: 2px solid rgba(37,211,102,.35);
-      animation: pulse 2.4s ease-out infinite;
-    }
-    @keyframes pulse {
-      0%   { transform: scale(1); opacity: 1; }
-      100% { transform: scale(1.65); opacity: 0; }
-    }
+    .fade-up { opacity: 0; transform: translateY(20px); animation: fadeUp .7s ease forwards; }
+    .d1 { animation-delay: .08s; } .d2 { animation-delay: .16s; } .d3 { animation-delay: .24s; } .d4 { animation-delay: .32s; }
+    @keyframes fadeUp { to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .fade-up { animation: none; opacity: 1; transform: none; } }
 
-    /* ── ANIMATIONS ────────────────────────────────────── */
-    .fade-up {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-up:nth-child(2) { transition-delay: .1s; }
-    .fade-up:nth-child(3) { transition-delay: .2s; }
-    .fade-up:nth-child(4) { transition-delay: .3s; }
-
-    /* ── RESPONSIVE ────────────────────────────────────── */
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; padding-top: 110px; }
-      .hero-text { padding-right: 0; }
-      .hero-visual { order: -1; margin-bottom: 32px; }
-      .hero-img-frame { max-width: 280px; }
-      .hero-badge { bottom: 16px; left: 0; }
-      .hero-badge2 { top: 12px; right: 0; }
-      nav ul { display: none; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-visual { max-width: 320px; margin: 0 auto; }
-      .stat-div { display: none; }
-    }
-
-    @media (max-width: 520px) {
-      section { padding: 72px 5vw; }
-      .hero { padding-left: 5vw; padding-right: 5vw; }
-      nav { padding: 18px 5vw; }
+    @media (max-width: 720px) {
+      main { padding: 48px 16px 32px; }
+      .choices { grid-template-columns: 1fr; max-width: 420px; }
+      .choice { padding: 28px 24px 26px; }
+      .lead { margin-bottom: 36px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">Dulce María <span>Rujano</span></div>
-  <ul>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#clientes">Clientes</a></li>
-    <li><a href="#testimonios">Testimonios</a></li>
-    <li><a href="#sobre">Sobre mí</a></li>
-  </ul>
-  <a href="https://wa.me/584129609728?text=Hola%20Dulce%2C%20me%20interesa%20trabajar%20contigo%20%F0%9F%8C�" class="nav-cta" target="_blank">Hablemos</a>
-</nav>
+<main>
+  <!-- Reemplaza por: <img src="dulce.jpg" alt="Dulce María Rujano" /> -->
+  <div class="avatar fade-up">DM</div>
 
-<!-- HERO -->
-<section class="hero" id="inicio">
-  <div class="hero-text fade-up visible">
-    <div class="hero-tag">Comunicadora Estratégica · Locutora · Ads Manager</div>
-    <h1>Comunica.<br>Conecta.<br><em>Convierte.</em></h1>
-    <p class="hero-desc">
-      Más de 15 años transformando marcas en Venezuela y Latinoamérica a través de la comunicación estratégica, el poder de la voz y la inteligencia digital.
-    </p>
-    <div class="hero-btns">
-      <a href="https://wa.me/584129609728?text=Hola%20Dulce%2C%20me%20interesa%20trabajar%20contigo%20%F0%9F%8C%B8" class="btn-primary" target="_blank">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
-        Contáctame por WhatsApp
-      </a>
-      <a href="#servicios" class="btn-secondary">Ver servicios →</a>
-    </div>
-  </div>
+  <p class="eyebrow fade-up d1">Bienvenido · Bienvenida</p>
+  <h1 class="fade-up d1">Hola, soy <em>Dulce María</em></h1>
+  <p class="lead fade-up d2">Cuéntame qué necesitas y te llevo al lugar indicado.</p>
 
-  <div class="hero-visual">
-    <div class="hero-img-frame">
-      <div class="hero-img-blob">
-        <!-- Reemplaza la imagen por: <img src="tu-foto.jpg" alt="Dulce María Rujano" /> -->
-        <div class="hero-img-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          <span>Tu foto aquí</span>
-        </div>
+  <div class="choices">
+    <a href="marca/" class="choice marca fade-up d3">
+      <div class="choice-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l15-6v14L3 13z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
       </div>
-      <div class="hero-badge">
-        <span class="hero-badge-num">+10</span>
-        <span class="hero-badge-label">Clientes activos</span>
-      </div>
-      <div class="hero-badge2">
-        <span class="hero-badge-num">15+</span>
-        <span class="hero-badge-label">Años en radio</span>
-      </div>
-    </div>
-  </div>
-</section>
+      <span class="choice-tag">Comunicación estratégica</span>
+      <h2>¿Quieres impulsar tu marca?</h2>
+      <p>Redes sociales, publicidad digital, locución y estrategia para que tu marca comunique, conecte y convierta.</p>
+      <span class="choice-go">Entrar
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat fade-up">
-    <span class="stat-num">15+</span>
-    <span class="stat-label">Años en radio</span>
+    <a href="inmuebles/" class="choice inmuebles fade-up d4">
+      <div class="choice-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9v11h14V9"/><path d="M10 20v-6h4v6"/></svg>
+      </div>
+      <span class="choice-tag">Asesoría inmobiliaria</span>
+      <h2>¿Quieres alquilar o vender vivienda?</h2>
+      <p>Te acompaño a vender, alquilar o encontrar tu próximo hogar, de forma segura y con la mejor promoción.</p>
+      <span class="choice-go">Entrar
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
   </div>
-  <div class="stat-div"></div>
-  <div class="stat fade-up">
-    <span class="stat-num">10+</span>
-    <span class="stat-label">Años en redes sociales</span>
-  </div>
-  <div class="stat-div"></div>
-  <div class="stat fade-up">
-    <span class="stat-num">+10</span>
-    <span class="stat-label">Clientes satisfechos</span>
-  </div>
-  <div class="stat-div"></div>
-  <div class="stat fade-up">
-    <span class="stat-num">3</span>
-    <span class="stat-label">Áreas de expertise</span>
-  </div>
-</div>
+</main>
 
-<!-- SERVICIOS -->
-<section id="servicios">
-  <div class="services-header">
-    <span class="section-tag">¿Qué hago?</span>
-    <h2 class="section-title">Servicios que <em>transforman</em><br>tu marca</h2>
-    <p class="section-desc">Combino estrategia, creatividad y tecnología para llevar tu comunicación al siguiente nivel.</p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card fade-up">
-      <div class="service-icon">📱</div>
-      <h3>Gestión de Redes Sociales</h3>
-      <p>Manejo integral de tus plataformas digitales con contenido estratégico, calendario editorial y crecimiento orgánico. Más de 10 años construyendo comunidades.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">🗺️</div>
-      <h3>Project Manager de Comunicación</h3>
-      <p>Coordino y ejecuto proyectos de comunicación estratégica de principio a fin, garantizando resultados medibles y alineados a tus objetivos de negocio.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">🎙️</div>
-      <h3>Voice Over & Locución</h3>
-      <p>Voz profesional para comerciales, podcasts, audiobooks, e-learning y más. 15+ años en radio respaldan cada grabación con autenticidad y presencia.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">📣</div>
-      <h3>Ads Manager</h3>
-      <p>Creación y optimización de campañas publicitarias en Meta, Google y TikTok Ads. Inversión inteligente, segmentación precisa y ROI medible.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">🏢</div>
-      <h3>Consultoría Empresarial</h3>
-      <p>Asesoría personalizada para emprendedores y empresas que quieren construir una comunicación coherente, profesional y con identidad diferenciadora.</p>
-    </div>
-    <div class="service-card fade-up">
-      <div class="service-icon">✨</div>
-      <h3>Estrategia de Contenido</h3>
-      <p>Desarrollo de narrativas de marca, guiones, scripts y contenido editorial que conecta emocionalmente con tu audiencia y posiciona tu expertise.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CLIENTES CARRUSEL -->
-<section id="clientes">
-  <div class="clients-header">
-    <span class="section-tag">Confían en mí</span>
-    <h2 class="section-title">Mis <em>clientes</em></h2>
-    <p class="section-desc" style="margin:0 auto">Marcas y emprendimientos que han potenciado su comunicación con resultados reales.</p>
-  </div>
-  <div class="carousel-wrap">
-    <div class="carousel" id="clientCarousel">
-      <div class="client-card fade-up">
-        <div class="client-logo">C1</div>
-        <div class="client-name">Cliente Uno</div>
-        <div class="client-sector">Sector / Industria</div>
-      </div>
-      <div class="client-card fade-up">
-        <div class="client-logo">C2</div>
-        <div class="client-name">Cliente Dos</div>
-        <div class="client-sector">Sector / Industria</div>
-      </div>
-      <div class="client-card fade-up">
-        <div class="client-logo">C3</div>
-        <div class="client-name">Cliente Tres</div>
-        <div class="client-sector">Sector / Industria</div>
-      </div>
-      <div class="client-card fade-up">
-        <div class="client-logo">C4</div>
-        <div class="client-name">Cliente Cuatro</div>
-        <div class="client-sector">Sector / Industria</div>
-      </div>
-      <div class="client-card fade-up">
-        <div class="client-logo">C5</div>
-        <div class="client-name">Cliente Cinco</div>
-        <div class="client-sector">Sector / Industria</div>
-      </div>
-      <div class="client-card fade-up">
-        <div class="client-logo">C6</div>
-        <div class="client-name">Cliente Seis</div>
-        <div class="client-sector">Sector / Industria</div>
-      </div>
-      <div class="client-card fade-up">
-        <div class="client-logo">C7</div>
-        <div class="client-name">Cliente Siete</div>
-        <div class="client-sector">Sector / Industria</div>
-      </div>
-      <div class="client-card fade-up">
-        <div class="client-logo">C8</div>
-        <div class="client-name">Cliente Ocho</div>
-        <div class="client-sector">Sector / Industria</div>
-      </div>
-      <div class="client-card fade-up">
-        <div class="client-logo">C9</div>
-        <div class="client-name">Cliente Nueve</div>
-        <div class="client-sector">Sector / Industria</div>
-      </div>
-      <div class="client-card fade-up">
-        <div class="client-logo">C+</div>
-        <div class="client-name">Y más...</div>
-        <div class="client-sector">+10 Clientes activos</div>
-      </div>
-    </div>
-    <div class="carousel-controls">
-      <button class="carousel-btn" id="prevBtn" aria-label="Anterior">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <button class="carousel-btn" id="nextBtn" aria-label="Siguiente">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIOS -->
-<section id="testimonios">
-  <div class="testimonials-header">
-    <span class="section-tag">Lo que dicen</span>
-    <h2 class="section-title">Testimonios que <em>inspiran</em></h2>
-    <p class="section-desc" style="margin:0 auto">La experiencia de quienes ya trabajan conmigo habla por sí sola.</p>
-  </div>
-  <div class="testimonials-grid">
-    <div class="testimonial-card fade-up">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">Trabajar con Dulce transformó por completo la presencia digital de mi marca. Su enfoque estratégico y su conocimiento del mercado nos llevaron a triplicar nuestra comunidad en menos de 6 meses.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">AM</div>
-        <div>
-          <div class="author-name">Ana Martínez</div>
-          <div class="author-role">CEO · Marca de moda</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card fade-up">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">La voz de Dulce para nuestros comerciales fue exactamente lo que buscábamos: profesional, cálida y con una presencia que realmente conecta con la audiencia. ¡Volvemos a trabajar con ella siempre!</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">CR</div>
-        <div>
-          <div class="author-name">Carlos Rodríguez</div>
-          <div class="author-role">Director Creativo · Agencia Pub.</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card fade-up">
-      <div class="stars">★★★★★</div>
-      <p class="testimonial-text">Gracias a las campañas de Ads que Dulce gestionó, logramos un ROAS increíble y posicionamos nuestro producto en un mercado muy competitivo. Su trabajo es simplemente extraordinario.</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">LV</div>
-        <div>
-          <div class="author-name">Laura Velázquez</div>
-          <div class="author-role">Fundadora · E-commerce</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SOBRE -->
-<section id="sobre">
-  <div class="about-grid">
-    <div class="about-visual fade-up">
-      <div class="about-deco"></div>
-      <div class="about-img">
-        <!-- Reemplaza con: <img src="dulce-about.jpg" alt="Dulce María Rujano" /> -->
-        <div class="about-img-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          <span>Foto de Dulce</span>
-        </div>
-      </div>
-    </div>
-    <div class="about-text fade-up">
-      <span class="section-tag">Sobre mí</span>
-      <h2 class="section-title">Hola, soy<br><em>Dulce María</em></h2>
-      <p>Soy Comunicadora Social con más de una década construyendo estrategias digitales que conectan marcas con personas reales. Mi pasión por la comunicación nació en la radio y hoy se expande a cada pantalla.</p>
-      <p>Como locutora profesional con más de 15 años en el aire, entiendo el poder de las palabras y el tono exacto para cada mensaje. Ese mismo criterio lo aplico en cada proyecto de comunicación estratégica.</p>
-      <ul class="about-list">
-        <li>Comunicadora Social certificada</li>
-        <li>+10 años de Social Media Management</li>
-        <li>Project Manager de proyectos de comunicación</li>
-        <li>Voice Over & Locutora profesional (15+ años en radio)</li>
-        <li>Ads Manager (Meta, Google, TikTok)</li>
-        <li>Empresaria y consultora de marcas</li>
-      </ul>
-      <a href="https://wa.me/584129609728?text=Hola%20Dulce%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20tus%20servicios%20%F0%9F%8C%B8" class="btn-primary" target="_blank" style="display:inline-flex;margin-top:8px;">
-        <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
-        Hablemos
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="cta-section">
-  <span class="section-tag">¿Lista para empezar?</span>
-  <h2 class="section-title">Tu marca merece<br>una comunicación <em>excepcional</em></h2>
-  <p class="cta-desc">Da el primer paso hoy. Hablemos de tu proyecto y descubramos juntos cómo potenciar tu presencia digital y tu voz de marca.</p>
-  <a href="https://wa.me/584129609728?text=Hola%20Dulce%2C%20quiero%20potenciar%20mi%20comunicaci%C3%B3n%20%F0%9F%8C%B8%20%C2%BFCu%C3%A1ndo%20podemos%20hablar%3F" class="btn-wa-lg" target="_blank">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
-    Escríbeme ahora por WhatsApp
-  </a>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Dulce María <span>Rujano</span></div>
-  <p>© 2025 · Comunicación Estratégica</p>
-  <div class="footer-links">
-    <a href="#servicios">Servicios</a>
-    <a href="#testimonios">Testimonios</a>
-    <a href="https://wa.me/584129609728" target="_blank">WhatsApp</a>
-  </div>
+  © 2025 Dulce María Rujano · <a href="https://wa.me/584129609728" target="_blank" rel="noopener">WhatsApp</a>
 </footer>
 
-<!-- FLOATING WA -->
-<a href="https://wa.me/584129609728?text=Hola%20Dulce%20%F0%9F%8C%B8" class="wa-float" target="_blank" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
-</a>
-
-<script>
-  // Carousel
-  const carousel = document.getElementById('clientCarousel');
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    carousel.scrollBy({ left: 284, behavior: 'smooth' });
-  });
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    carousel.scrollBy({ left: -284, behavior: 'smooth' });
-  });
-
-  // Fade-up on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
 </body>
 </html>

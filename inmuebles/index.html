@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dulce María Rujano — Asesora Inmobiliaria</title>
+  <meta name="description" content="Vende, alquila o encuentra tu próximo hogar con Dulce María Rujano. Asesoría inmobiliaria con promoción digital profesional." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #FAF7F2;
+      --ivory:      #F4EFE6;
+      --blush:      #EDD9C8;
+      --sage:       #C8CEBD;
+      --sage-soft:  #E6EADF;
+      --warm-grey:  #9E948A;
+      --text:       #3A3330;
+      --text-light: #7A6F68;
+      --accent:     #6F7C5E;
+      --accent-2:   #B8906E;
+      --white:      #FFFFFF;
+      --wa-green:   #25D366;
+      --shadow:     0 4px 40px rgba(58,51,48,.07);
+      --radius:     18px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ───────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 6vw;
+      background: rgba(250,247,242,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(200,206,189,.35);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 400; letter-spacing: .04em;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); font-style: italic; }
+    nav ul { list-style: none; display: flex; gap: 32px; }
+    nav ul a { font-size: .8rem; text-decoration: none; color: var(--text-light); letter-spacing: .08em; text-transform: uppercase; transition: color .25s; }
+    nav ul a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--text); color: var(--cream);
+      padding: 10px 22px; border-radius: 50px;
+      font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+      text-decoration: none; transition: background .25s, transform .2s;
+    }
+    .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+    /* ── BUTTONS ───────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--wa-green); color: #fff;
+      padding: 15px 30px; border-radius: 50px; border: 0; cursor: pointer;
+      font-family: inherit; font-size: .88rem; font-weight: 500; text-decoration: none;
+      letter-spacing: .02em; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 8px 28px rgba(37,211,102,.28);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(37,211,102,.36); }
+    .btn-primary svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .btn-secondary {
+      font-size: .82rem; color: var(--text-light); text-decoration: none;
+      border-bottom: 1px solid var(--sage); padding-bottom: 2px;
+      letter-spacing: .06em; transition: color .2s, border-color .2s;
+    }
+    .btn-secondary:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── HERO ──────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 6vw 80px;
+    }
+    .hero-text { padding-right: 6vw; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--sage-soft); border: 1px solid var(--sage);
+      border-radius: 50px; padding: 6px 16px;
+      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 28px;
+    }
+    .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5.2vw, 5rem);
+      font-weight: 300; line-height: 1.08; letter-spacing: -.01em;
+      margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-desc {
+      font-size: 1rem; line-height: 1.7; color: var(--text-light);
+      max-width: 460px; margin-bottom: 44px;
+    }
+    .hero-btns { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+
+    .hero-visual { position: relative; display: flex; justify-content: center; }
+    .hero-img-frame { position: relative; width: min(440px, 92%); }
+    .hero-img {
+      width: 100%; aspect-ratio: 4/5;
+      background: var(--sage-soft);
+      border-radius: 200px 200px var(--radius) var(--radius);
+      overflow: hidden;
+      border: 3px solid var(--sage);
+      box-shadow: var(--shadow);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+    .img-placeholder {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      color: var(--warm-grey); font-size: .82rem; text-align: center; padding: 20px;
+    }
+    .img-placeholder svg { width: 48px; height: 48px; opacity: .45; }
+    .hero-badge {
+      position: absolute; bottom: 36px; left: -24px;
+      background: var(--white); border-radius: 14px;
+      padding: 14px 18px; box-shadow: var(--shadow);
+      border: 1px solid var(--ivory);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-badge-icon {
+      width: 38px; height: 38px; border-radius: 10px; background: var(--sage-soft); color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-badge-icon svg { width: 20px; height: 20px; }
+    .hero-badge strong { display: block; font-size: .88rem; font-weight: 500; }
+    .hero-badge small { font-size: .72rem; color: var(--text-light); }
+    .hero-badge2 {
+      position: absolute; top: 40px; right: -20px;
+      background: var(--accent); color: #fff; border-radius: 14px;
+      padding: 14px 18px; box-shadow: 0 8px 28px rgba(111,124,94,.3);
+      font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; line-height: 1.5;
+    }
+    .hero-badge2 b { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; text-transform: none; letter-spacing: 0; display: block; }
+
+    /* ── QUICK INTENT STRIP ────────────────────────────── */
+    .intent {
+      background: var(--ivory); border-top: 1px solid var(--sage); border-bottom: 1px solid var(--sage);
+      padding: 36px 6vw;
+    }
+    .intent-title { text-align: center; font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-light); margin-bottom: 20px; }
+    .intent-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .intent-btn {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--white); border: 1px solid var(--sage); border-radius: 14px;
+      padding: 16px 18px; cursor: pointer; text-align: left;
+      font-family: inherit; font-size: .9rem; color: var(--text);
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .intent-btn:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .intent-btn span.ico { font-size: 1.3rem; }
+
+    /* ── SECTION UTILITY ───────────────────────────────── */
+    section { padding: 100px 6vw; }
+    .section-tag {
+      display: inline-block; font-size: .7rem; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300; line-height: 1.15; margin-bottom: 18px;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+    .section-desc { font-size: .95rem; line-height: 1.75; color: var(--text-light); max-width: 540px; }
+    .center { text-align: center; }
+    .center .section-desc { margin: 0 auto; }
+
+    /* ── SERVICIOS ─────────────────────────────────────── */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; margin-top: 64px;
+    }
+    .service-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 36px 30px; border: 1px solid var(--ivory);
+      transition: transform .3s, box-shadow .3s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--sage), var(--accent));
+      transform: scaleX(0); transform-origin: left; transition: transform .35s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--sage-soft); display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px; font-size: 1.5rem;
+    }
+    .service-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; margin-bottom: 10px; }
+    .service-card p { font-size: .87rem; line-height: 1.7; color: var(--text-light); }
+
+    /* ── DIFERENCIAL ───────────────────────────────────── */
+    #diferencial { background: var(--text); color: var(--cream); }
+    #diferencial .section-tag { color: var(--sage); }
+    #diferencial .section-title em { color: var(--sage); }
+    #diferencial .section-desc { color: rgba(250,247,242,.65); }
+    .diff-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 72px; align-items: center; }
+    .diff-list { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .diff-item {
+      border: 1px solid rgba(250,247,242,.12); border-radius: 16px; padding: 24px 22px;
+      background: rgba(250,247,242,.03);
+    }
+    .diff-item b { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; margin-bottom: 6px; color: var(--cream); }
+    .diff-item span { font-size: .84rem; line-height: 1.6; color: rgba(250,247,242,.6); }
+
+    /* ── PROCESO ───────────────────────────────────────── */
+    #proceso { background: var(--ivory); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 64px; counter-reset: step; }
+    .step {
+      background: var(--white); border-radius: var(--radius); padding: 32px 26px;
+      border: 1px solid var(--sage-soft); position: relative;
+    }
+    .step::before {
+      counter-increment: step; content: '0' counter(step);
+      font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300;
+      color: var(--accent); display: block; line-height: 1; margin-bottom: 16px;
+    }
+    .step h3 { font-size: 1rem; font-weight: 500; margin-bottom: 8px; }
+    .step p { font-size: .85rem; line-height: 1.65; color: var(--text-light); }
+
+    /* ── PROPIEDADES ───────────────────────────────────── */
+    .props-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+    .props-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .prop-card {
+      background: var(--white); border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--ivory); transition: transform .3s, box-shadow .3s;
+      display: flex; flex-direction: column;
+    }
+    .prop-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .prop-img {
+      aspect-ratio: 4/3; background: var(--sage-soft); position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .prop-img img { width: 100%; height: 100%; object-fit: cover; }
+    .prop-badge {
+      position: absolute; top: 14px; left: 14px;
+      background: var(--white); color: var(--accent); border-radius: 50px;
+      padding: 5px 12px; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 500;
+    }
+    .prop-badge.venta { background: var(--accent); color: #fff; }
+    .prop-body { padding: 22px 24px 24px; display: flex; flex-direction: column; flex: 1; }
+    .prop-price { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 500; margin-bottom: 4px; }
+    .prop-title { font-weight: 500; font-size: .95rem; margin-bottom: 4px; }
+    .prop-loc { font-size: .8rem; color: var(--text-light); margin-bottom: 16px; }
+    .prop-feats { display: flex; gap: 16px; font-size: .78rem; color: var(--text-light); padding-top: 14px; border-top: 1px solid var(--ivory); margin-bottom: 18px; }
+    .prop-link { margin-top: auto; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); text-decoration: none; font-weight: 500; }
+    .prop-link:hover { text-decoration: underline; }
+
+    /* ── FORMULARIO ────────────────────────────────────── */
+    #contacto { background: var(--ivory); }
+    .form-wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: start; }
+    .form-card {
+      background: var(--white); border-radius: 24px; padding: 40px 36px;
+      box-shadow: var(--shadow); border: 1px solid var(--sage-soft);
+    }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; }
+    .field input, .field select, .field textarea {
+      width: 100%; font-family: inherit; font-size: .95rem; color: var(--text);
+      background: var(--cream); border: 1px solid var(--sage); border-radius: 12px;
+      padding: 13px 16px; transition: border-color .2s, box-shadow .2s;
+    }
+    .field textarea { min-height: 96px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(111,124,94,.15); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .op-group { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .op-group input { position: absolute; opacity: 0; pointer-events: none; }
+    .op-group label {
+      display: block; text-align: center; cursor: pointer;
+      border: 1px solid var(--sage); border-radius: 12px; padding: 12px 10px;
+      font-size: .86rem; text-transform: none; letter-spacing: 0; color: var(--text); margin: 0;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .op-group input:checked + label { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .op-group input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .form-card .btn-primary { width: 100%; justify-content: center; margin-top: 8px; }
+    .form-note { font-size: .76rem; color: var(--warm-grey); text-align: center; margin-top: 14px; }
+    .contact-points { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .contact-points li { display: flex; gap: 14px; align-items: flex-start; font-size: .9rem; line-height: 1.6; color: var(--text-light); }
+    .contact-points li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 8px; }
+
+    /* ── SOBRE ─────────────────────────────────────────── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-visual { position: relative; }
+    .about-img {
+      width: 100%; aspect-ratio: 3/4; background: var(--sage-soft);
+      border-radius: var(--radius) var(--radius) 200px 200px;
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
+    }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+    .about-deco { position: absolute; bottom: -16px; left: -16px; width: 110px; height: 110px; border-radius: 50%; background: var(--blush); opacity: .55; z-index: -1; }
+    .about-text p { font-size: .93rem; line-height: 1.8; color: var(--text-light); margin-bottom: 16px; }
+    .about-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+    .about-list li { display: flex; align-items: center; gap: 12px; font-size: .88rem; }
+    .about-list li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+    /* ── FAQ ───────────────────────────────────────────── */
+    #faq { background: var(--ivory); }
+    .faq-list { max-width: 760px; margin: 56px auto 0; display: flex; flex-direction: column; gap: 12px; }
+    details {
+      background: var(--white); border: 1px solid var(--sage-soft); border-radius: 14px;
+      padding: 20px 24px;
+    }
+    summary {
+      cursor: pointer; list-style: none; font-weight: 500; font-size: .95rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--accent); transition: transform .25s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { font-size: .88rem; line-height: 1.7; color: var(--text-light); margin-top: 12px; }
+
+    /* ── CTA / FOOTER ──────────────────────────────────── */
+    .cta-section { background: var(--text); text-align: center; }
+    .cta-section .section-tag { color: var(--sage); }
+    .cta-section .section-title { color: var(--cream); }
+    .cta-section .section-title em { color: var(--sage); }
+    .cta-desc { color: rgba(250,247,242,.65); font-size: .95rem; line-height: 1.7; max-width: 500px; margin: 0 auto 44px; }
+    .cta-section .btn-primary { padding: 18px 40px; font-size: 1rem; }
+
+    footer {
+      background: var(--text); border-top: 1px solid rgba(255,255,255,.06);
+      padding: 36px 6vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--cream); letter-spacing: .04em; text-decoration: none; }
+    .footer-logo span { color: var(--sage); font-style: italic; }
+    footer p { font-size: .76rem; color: rgba(250,247,242,.4); }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: .76rem; color: rgba(250,247,242,.45); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--sage); }
+
+    .wa-float {
+      position: fixed; bottom: 30px; right: 30px; z-index: 200;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: var(--wa-green); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 30px rgba(37,211,102,.45);
+      text-decoration: none; transition: transform .2s;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+    .wa-float svg { width: 26px; height: 26px; }
+    .wa-float::before {
+      content: ''; position: absolute; inset: -4px; border-radius: 50%;
+      border: 2px solid rgba(37,211,102,.35);
+      animation: pulse 2.4s ease-out infinite;
+    }
+    @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.65); opacity: 0; } }
+
+    /* ── ANIMATIONS ────────────────────────────────────── */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+    .fade-up:nth-child(2) { transition-delay: .1s; }
+    .fade-up:nth-child(3) { transition-delay: .2s; }
+    .fade-up:nth-child(4) { transition-delay: .3s; }
+    @media (prefers-reduced-motion: reduce) { .fade-up { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+    /* ── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .steps, .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .intent-grid { grid-template-columns: repeat(2, 1fr); }
+      .diff-grid, .form-wrap { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; padding-top: 110px; }
+      .hero-text { padding-right: 0; }
+      .hero-visual { order: -1; margin-bottom: 32px; }
+      .hero-img-frame { max-width: 280px; }
+      .hero-badge { bottom: 16px; left: -8px; }
+      .hero-badge2 { top: 16px; right: -8px; }
+      nav ul { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-visual { max-width: 320px; margin: 0 auto; }
+    }
+    @media (max-width: 560px) {
+      section { padding: 72px 16px; }
+      .hero, .intent { padding-left: 16px; padding-right: 16px; }
+      nav { padding: 16px; gap: 12px; }
+      .nav-logo { font-size: 1.05rem; white-space: nowrap; }
+      .nav-cta { padding: 9px 14px; font-size: .68rem; white-space: nowrap; }
+      .steps, .services-grid, .diff-list, .field-row { grid-template-columns: 1fr; }
+      .intent-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .intent-btn { padding: 14px; font-size: .84rem; }
+      .form-card { padding: 28px 20px; }
+      footer { padding: 32px 16px; }
+      .wa-float { bottom: 20px; right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../" class="nav-logo">Dulce María <span>Rujano</span></a>
+  <ul>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proceso">Cómo trabajo</a></li>
+    <li><a href="#propiedades">Propiedades</a></li>
+    <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="../marca/">Marca</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Publica tu inmueble</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-text fade-up visible">
+    <div class="hero-tag">Asesora Inmobiliaria · Venta · Alquiler</div>
+    <h1>Tu hogar,<br>en las <em>mejores manos.</em></h1>
+    <p class="hero-desc">
+      Te acompaño a vender, alquilar o encontrar tu próxima vivienda con asesoría cercana, procesos claros y una promoción digital que hace que tu inmueble se vea como merece.
+    </p>
+    <div class="hero-btns">
+      <a href="https://wa.me/584129609728?text=Hola%20Dulce%2C%20quiero%20asesor%C3%ADa%20inmobiliaria%20%F0%9F%8F%A1" class="btn-primary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
+        Escríbeme por WhatsApp
+      </a>
+      <a href="#propiedades" class="btn-secondary">Ver propiedades →</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-img-frame">
+      <div class="hero-img">
+        <!-- Reemplaza por: <img src="../img/dulce-realtor.jpg" alt="Dulce María Rujano, asesora inmobiliaria" /> -->
+        <div class="img-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span>Foto de Dulce</span>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div><strong>Proceso seguro</strong><small>Documentos en regla</small></div>
+      </div>
+      <div class="hero-badge2"><b>Marketing</b>digital incluido</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK INTENT -->
+<div class="intent">
+  <p class="intent-title">¿Qué necesitas hoy?</p>
+  <div class="intent-grid">
+    <button class="intent-btn" data-op="Vender"><span class="ico">🏷️</span> Quiero vender</button>
+    <button class="intent-btn" data-op="Poner en alquiler"><span class="ico">🔑</span> Quiero alquilar mi inmueble</button>
+    <button class="intent-btn" data-op="Comprar"><span class="ico">🏡</span> Busco comprar</button>
+    <button class="intent-btn" data-op="Alquilar"><span class="ico">📍</span> Busco alquilar</button>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="center">
+    <span class="section-tag">¿Cómo te ayudo?</span>
+    <h2 class="section-title">Servicios <em>inmobiliarios</em></h2>
+    <p class="section-desc">Acompañamiento completo, desde la primera visita hasta la entrega de llaves.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">🏷️</div>
+      <h3>Venta de inmuebles</h3>
+      <p>Definimos el precio correcto, preparamos tu propiedad para destacar y la llevamos frente a compradores reales hasta cerrar la negociación.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🔑</div>
+      <h3>Alquiler y gestión</h3>
+      <p>Encuentro inquilinos confiables, verifico referencias y preparo un contrato claro para que alquiles con tranquilidad.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">🏡</div>
+      <h3>Búsqueda de vivienda</h3>
+      <p>¿Buscas comprar o alquilar? Filtro opciones según tu presupuesto, zona y necesidades, y te acompaño en cada visita.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">📊</div>
+      <h3>Precio de mercado</h3>
+      <p>Análisis comparativo de la zona para que sepas cuánto vale realmente tu inmueble antes de publicarlo.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">📸</div>
+      <h3>Promoción profesional</h3>
+      <p>Fotos cuidadas, video recorrido, textos que venden y campañas pagadas en redes para que tu inmueble llegue a más personas.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">📑</div>
+      <h3>Trámites y documentos</h3>
+      <p>Te oriento con la documentación necesaria y coordino con los profesionales legales para un cierre sin sorpresas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAL -->
+<section id="diferencial">
+  <div class="diff-grid">
+    <div class="fade-up">
+      <span class="section-tag">Mi diferencial</span>
+      <h2 class="section-title">Tu inmueble no solo se publica,<br><em>se promociona.</em></h2>
+      <p class="section-desc">Más de 15 años en comunicación, radio y publicidad digital al servicio de tu propiedad. Sé cómo contar la historia de un espacio para que la persona correcta quiera verlo.</p>
+    </div>
+    <div class="diff-list">
+      <div class="diff-item fade-up"><b>Anuncios segmentados</b><span>Campañas en Meta e Instagram dirigidas a compradores e inquilinos de tu zona.</span></div>
+      <div class="diff-item fade-up"><b>Contenido que enamora</b><span>Fotos, reels y recorridos pensados para destacar lo mejor de cada espacio.</span></div>
+      <div class="diff-item fade-up"><b>Comunicación clara</b><span>Te mantengo al tanto de cada visita, oferta y avance del proceso.</span></div>
+      <div class="diff-item fade-up"><b>Negociación cercana</b><span>Represento tus intereses con criterio y trato humano en cada conversación.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="center">
+    <span class="section-tag">Cómo trabajo</span>
+    <h2 class="section-title">Simple, claro y <em>acompañado</em></h2>
+    <p class="section-desc">Así es el camino para vender o alquilar tu inmueble conmigo.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-up"><h3>Conversamos</h3><p>Me cuentas qué quieres lograr y conozco tu inmueble o lo que estás buscando.</p></div>
+    <div class="step fade-up"><h3>Valoramos</h3><p>Definimos juntos el precio o presupuesto ideal según el mercado actual.</p></div>
+    <div class="step fade-up"><h3>Promocionamos</h3><p>Producción de fotos y contenido, publicación y campañas digitales.</p></div>
+    <div class="step fade-up"><h3>Cerramos</h3><p>Visitas, negociación, documentos y entrega de llaves sin complicaciones.</p></div>
+  </div>
+</section>
+
+<!-- PROPIEDADES -->
+<section id="propiedades">
+  <div class="props-head">
+    <div>
+      <span class="section-tag">Disponibles</span>
+      <h2 class="section-title" style="margin-bottom:0">Propiedades <em>destacadas</em></h2>
+    </div>
+    <a href="https://wa.me/584129609728?text=Hola%20Dulce%2C%20quiero%20ver%20todas%20las%20propiedades%20disponibles" class="btn-secondary" target="_blank" rel="noopener">Pide el catálogo completo →</a>
+  </div>
+
+  <!--
+    Para agregar o editar propiedades: copia un bloque <article class="prop-card"> y cambia
+    la foto, el tipo (venta / alquiler), precio, título, zona y características.
+  -->
+  <div class="props-grid">
+    <article class="prop-card fade-up">
+      <div class="prop-img">
+        <span class="prop-badge venta">Venta</span>
+        <div class="img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9v11h14V9"/></svg><span>Foto del inmueble</span></div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">$ 00.000</div>
+        <div class="prop-title">Apartamento · Título de la propiedad</div>
+        <div class="prop-loc">Zona, Ciudad</div>
+        <div class="prop-feats"><span>🛏 3 hab.</span><span>🛁 2 baños</span><span>📐 90 m²</span></div>
+        <a class="prop-link" data-prop="Apartamento en venta · Zona, Ciudad" href="#">Me interesa →</a>
+      </div>
+    </article>
+    <article class="prop-card fade-up">
+      <div class="prop-img">
+        <span class="prop-badge">Alquiler</span>
+        <div class="img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9v11h14V9"/></svg><span>Foto del inmueble</span></div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">$ 000 <small style="font-size:.9rem;color:var(--text-light)">/ mes</small></div>
+        <div class="prop-title">Casa · Título de la propiedad</div>
+        <div class="prop-loc">Zona, Ciudad</div>
+        <div class="prop-feats"><span>🛏 2 hab.</span><span>🛁 1 baño</span><span>📐 70 m²</span></div>
+        <a class="prop-link" data-prop="Casa en alquiler · Zona, Ciudad" href="#">Me interesa →</a>
+      </div>
+    </article>
+    <article class="prop-card fade-up">
+      <div class="prop-img">
+        <span class="prop-badge venta">Venta</span>
+        <div class="img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9v11h14V9"/></svg><span>Foto del inmueble</span></div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-price">$ 00.000</div>
+        <div class="prop-title">Townhouse · Título de la propiedad</div>
+        <div class="prop-loc">Zona, Ciudad</div>
+        <div class="prop-feats"><span>🛏 4 hab.</span><span>🛁 3 baños</span><span>📐 150 m²</span></div>
+        <a class="prop-link" data-prop="Townhouse en venta · Zona, Ciudad" href="#">Me interesa →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- FORMULARIO -->
+<section id="contacto">
+  <div class="form-wrap">
+    <div class="fade-up">
+      <span class="section-tag">Hablemos</span>
+      <h2 class="section-title">Cuéntame sobre<br>tu <em>inmueble</em></h2>
+      <p class="section-desc">Completa estos datos y se abrirá WhatsApp con tu mensaje listo para enviar. Te respondo lo antes posible.</p>
+      <ul class="contact-points">
+        <li>Evaluación inicial sin compromiso.</li>
+        <li>Te digo con honestidad en cuánto se puede vender o alquilar.</li>
+        <li>Si buscas vivienda, te envío opciones que sí encajan contigo.</li>
+      </ul>
+    </div>
+
+    <form class="form-card fade-up" id="leadForm" novalidate>
+      <div class="field">
+        <label>¿Qué quieres hacer?</label>
+        <div class="op-group">
+          <input type="radio" name="op" id="op1" value="Vender" checked><label for="op1">Vender</label>
+          <input type="radio" name="op" id="op2" value="Poner en alquiler"><label for="op2">Alquilar mi inmueble</label>
+          <input type="radio" name="op" id="op3" value="Comprar"><label for="op3">Comprar</label>
+          <input type="radio" name="op" id="op4" value="Alquilar"><label for="op4">Busco alquilar</label>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="tipo">Tipo de inmueble</label>
+          <select id="tipo">
+            <option>Apartamento</option>
+            <option>Casa</option>
+            <option>Townhouse</option>
+            <option>Terreno</option>
+            <option>Local comercial</option>
+            <option>Oficina</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="zona">Zona / Ciudad</label>
+          <input id="zona" type="text" placeholder="Ej. El Paraíso, Caracas" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="nombre">Tu nombre</label>
+        <input id="nombre" type="text" placeholder="Nombre y apellido" autocomplete="name" required />
+      </div>
+      <div class="field">
+        <label for="detalle">Detalles <span style="text-transform:none;letter-spacing:0">(opcional)</span></label>
+        <textarea id="detalle" placeholder="Habitaciones, metros, presupuesto, fecha en que lo necesitas…"></textarea>
+      </div>
+      <button type="submit" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
+        Enviar por WhatsApp
+      </button>
+      <p class="form-note">Tus datos solo se usan para responderte.</p>
+    </form>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="about-grid">
+    <div class="about-visual fade-up">
+      <div class="about-deco"></div>
+      <div class="about-img">
+        <!-- Reemplaza por: <img src="../img/dulce-about.jpg" alt="Dulce María Rujano" /> -->
+        <div class="img-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span>Foto de Dulce</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-text fade-up">
+      <span class="section-tag">Sobre mí</span>
+      <h2 class="section-title">Hola, soy<br><em>Dulce María</em></h2>
+      <p>Soy asesora inmobiliaria y comunicadora social. Durante más de 15 años he ayudado a marcas a comunicar mejor, y hoy pongo esa misma experiencia al servicio de las personas que quieren vender, alquilar o encontrar su hogar.</p>
+      <p>Creo que cada inmueble tiene una historia y que la confianza es la base de cualquier negocio. Por eso trabajo con transparencia, cercanía y mucha dedicación en cada proceso.</p>
+      <ul class="about-list">
+        <li>Asesora inmobiliaria en venta y alquiler</li>
+        <li>Comunicadora Social · 15+ años en medios</li>
+        <li>Especialista en publicidad digital (Meta, Google, TikTok)</li>
+        <li>Acompañamiento personalizado de principio a fin</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="center">
+    <span class="section-tag">Preguntas frecuentes</span>
+    <h2 class="section-title">Resolvemos tus <em>dudas</em></h2>
+  </div>
+  <div class="faq-list">
+    <details class="fade-up">
+      <summary>¿Cuánto cobras por vender o alquilar mi inmueble?</summary>
+      <p>Trabajo con una comisión sobre el cierre de la operación, que conversamos desde el primer contacto y queda por escrito. Si no se concreta la venta o el alquiler, no cobro.</p>
+    </details>
+    <details class="fade-up">
+      <summary>¿Qué documentos necesito para vender?</summary>
+      <p>Por lo general: documento de propiedad, cédula del propietario, solvencias y ficha catastral. En la primera conversación reviso tu caso y te digo exactamente qué hace falta.</p>
+    </details>
+    <details class="fade-up">
+      <summary>¿Cuánto tiempo tarda en venderse o alquilarse?</summary>
+      <p>Depende de la zona, el precio y el estado del inmueble. Un precio bien definido y una buena promoción acortan mucho los tiempos; te doy una estimación realista desde el inicio.</p>
+    </details>
+    <details class="fade-up">
+      <summary>¿También me ayudas si busco dónde vivir?</summary>
+      <p>Sí. Me cuentas tu presupuesto, zona y lo que necesitas, y te envío opciones filtradas. Te acompaño en las visitas y en la negociación.</p>
+    </details>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <span class="section-tag">¿Empezamos?</span>
+  <h2 class="section-title">El próximo paso hacia<br>tu <em>nuevo comienzo</em></h2>
+  <p class="cta-desc">Vender, alquilar o mudarte es una gran decisión. Hablemos y te guío con claridad desde el primer día.</p>
+  <a href="https://wa.me/584129609728?text=Hola%20Dulce%2C%20quiero%20asesor%C3%ADa%20inmobiliaria%20%F0%9F%8F%A1%20%C2%BFCu%C3%A1ndo%20podemos%20hablar%3F" class="btn-primary" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
+    Escríbeme ahora por WhatsApp
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="../" class="footer-logo">Dulce María <span>Rujano</span></a>
+  <p>© 2025 · Asesoría Inmobiliaria</p>
+  <div class="footer-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#propiedades">Propiedades</a>
+    <a href="../marca/">Impulsa tu marca</a>
+    <a href="https://wa.me/584129609728" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</footer>
+
+<a href="https://wa.me/584129609728?text=Hola%20Dulce%2C%20quiero%20asesor%C3%ADa%20inmobiliaria%20%F0%9F%8F%A1" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
+</a>
+
+<script>
+  const WA = '584129609728';
+  const openWA = (text) => window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+
+  // Botones rápidos → preseleccionan la operación y bajan al formulario
+  document.querySelectorAll('.intent-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const radio = document.querySelector('input[name="op"][value="' + btn.dataset.op + '"]');
+      if (radio) radio.checked = true;
+      document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => document.getElementById('nombre').focus({ preventScroll: true }), 600);
+    });
+  });
+
+  // "Me interesa" en cada propiedad
+  document.querySelectorAll('.prop-link').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      openWA('Hola Dulce, me interesa esta propiedad: ' + a.dataset.prop + '. ¿Me das más información?');
+    });
+  });
+
+  // Formulario → mensaje de WhatsApp
+  document.getElementById('leadForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const nombre = document.getElementById('nombre');
+    if (!nombre.value.trim()) { nombre.focus(); nombre.reportValidity(); return; }
+    const op = document.querySelector('input[name="op"]:checked').value;
+    const tipo = document.getElementById('tipo').value;
+    const zona = document.getElementById('zona').value.trim();
+    const detalle = document.getElementById('detalle').value.trim();
+    const frases = { 'Vender': 'Quiero vender un inmueble', 'Poner en alquiler': 'Quiero poner en alquiler un inmueble', 'Comprar': 'Busco comprar vivienda', 'Alquilar': 'Busco vivienda en alquiler' };
+    let msg = 'Hola Dulce, soy ' + nombre.value.trim() + '. ' + (frases[op] || op) + '.\n\n• Tipo: ' + tipo;
+    if (zona) msg += '\n• Zona: ' + zona;
+    if (detalle) msg += '\n• Detalles: ' + detalle;
+    openWA(msg);
+  });
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
