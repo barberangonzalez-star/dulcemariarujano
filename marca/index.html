@@ -318,6 +318,54 @@
       background: var(--accent); flex-shrink: 0;
     }
 
+    /* ── CONTACTO / FORM ──────────────────────────────── */
+    #contacto { background: var(--cream); }
+    .form-wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: start; }
+    .form-card {
+      background: var(--white); border-radius: 24px; padding: 40px 36px;
+      box-shadow: var(--shadow); border: 1px solid var(--ivory);
+    }
+    .field { margin-bottom: 18px; }
+    .field > label, .field-label { display: block; font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; }
+    .field input, .field select, .field textarea {
+      width: 100%; font-family: inherit; font-size: .95rem; color: var(--text);
+      background: var(--cream); border: 1px solid var(--blush); border-radius: 12px;
+      padding: 13px 16px; transition: border-color .2s, box-shadow .2s;
+    }
+    .field textarea { min-height: 96px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(184,144,110,.15); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chips input { position: absolute; opacity: 0; pointer-events: none; }
+    .chips label {
+      cursor: pointer; border: 1px solid var(--blush); border-radius: 50px;
+      padding: 9px 16px; font-size: .84rem; color: var(--text); background: var(--cream);
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .chips input:checked + label { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .chips input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .form-card .btn-primary { width: 100%; justify-content: center; margin-top: 8px; border: 0; cursor: pointer; font-family: inherit; }
+    .form-note { font-size: .76rem; color: var(--warm-grey); text-align: center; margin-top: 14px; }
+    .form-error { font-size: .8rem; color: #B5543C; margin-top: 8px; display: none; }
+    .contact-points { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .contact-points li { display: flex; gap: 14px; align-items: flex-start; font-size: .9rem; line-height: 1.6; color: var(--text-light); }
+    .contact-points li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 8px; }
+    .phone-card {
+      display: inline-flex; align-items: center; gap: 14px; margin-top: 32px;
+      background: var(--white); border: 1px solid var(--blush); border-radius: 16px;
+      padding: 14px 20px 14px 14px; text-decoration: none; color: var(--text);
+      transition: border-color .2s, transform .2s;
+    }
+    .phone-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .phone-card .ico { width: 44px; height: 44px; border-radius: 12px; background: var(--wa-green); color: #fff; display: flex; align-items: center; justify-content: center; }
+    .phone-card .ico svg { width: 22px; height: 22px; }
+    .phone-card small { display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-light); }
+    .phone-card strong { font-size: 1.1rem; font-weight: 500; letter-spacing: .02em; }
+    .cta-phone { display: block; margin-top: 22px; font-size: .9rem; color: rgba(250,247,242,.7); }
+    .cta-phone a { color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(250,247,242,.3); }
+    @media (max-width: 960px) { .form-wrap { grid-template-columns: 1fr; gap: 48px; } }
+    @media (max-width: 560px) { .field-row { grid-template-columns: 1fr; gap: 0; } .form-card { padding: 28px 20px; } }
+
     /* ── CTA FINAL ─────────────────────────────────────── */
     .cta-section {
       background: var(--text); padding: 100px 6vw;
@@ -417,6 +465,7 @@
     <li><a href="#clientes">Clientes</a></li>
     <li><a href="#testimonios">Testimonios</a></li>
     <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#contacto">Contacto</a></li>
     <li><a href="../inmuebles/">Inmuebles</a></li>
   </ul>
   <a href="https://wa.me/584129609728?text=Hola%20Dulce%2C%20me%20interesa%20trabajar%20contigo%20%F0%9F%8C%B8" class="nav-cta" target="_blank">Hablemos</a>
@@ -673,6 +722,79 @@
   </div>
 </section>
 
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="form-wrap">
+    <div class="fade-up">
+      <span class="section-tag">Hablemos</span>
+      <h2 class="section-title">Cuéntame sobre<br>tu <em>marca</em></h2>
+      <p class="section-desc">Completa estos datos y se abrirá WhatsApp con tu solicitud lista para enviar. Así llego a nuestra primera conversación sabiendo qué necesitas.</p>
+      <ul class="contact-points">
+        <li>Primera conversación sin compromiso.</li>
+        <li>Propuesta a la medida de tu marca y tu presupuesto.</li>
+        <li>Respuesta personal, directamente por WhatsApp.</li>
+      </ul>
+      <a class="phone-card" href="https://wa.me/584129609728" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg></span>
+        <span><small>WhatsApp y llamadas</small><strong>+58 412 960 9728</strong></span>
+      </a>
+    </div>
+
+    <form class="form-card fade-up" id="marcaForm" novalidate>
+      <div class="field">
+        <span class="field-label">¿Qué servicio te interesa?</span>
+        <div class="chips">
+            <input type="checkbox" name="serv" id="sv1" value="Gestión de Redes Sociales"><label for="sv1">Gestión de Redes Sociales</label>
+            <input type="checkbox" name="serv" id="sv2" value="Ads Manager"><label for="sv2">Ads Manager</label>
+            <input type="checkbox" name="serv" id="sv3" value="Voice Over & Locución"><label for="sv3">Voice Over & Locución</label>
+            <input type="checkbox" name="serv" id="sv4" value="Estrategia de Contenido"><label for="sv4">Estrategia de Contenido</label>
+            <input type="checkbox" name="serv" id="sv5" value="Project Manager de Comunicación"><label for="sv5">Project Manager de Comunicación</label>
+            <input type="checkbox" name="serv" id="sv6" value="Consultoría Empresarial"><label for="sv6">Consultoría Empresarial</label>
+        </div>
+        <p class="form-error" id="servError">Elige al menos un servicio.</p>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="mNombre">Tu nombre</label>
+          <input id="mNombre" type="text" placeholder="Nombre y apellido" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="mMarca">Marca o negocio</label>
+          <input id="mMarca" type="text" placeholder="Ej. Café Aurora" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="mRubro">Rubro</label>
+          <input id="mRubro" type="text" placeholder="Ej. Gastronomía, moda, salud…" />
+        </div>
+        <div class="field">
+          <label for="mRedes">Instagram o web</label>
+          <input id="mRedes" type="text" placeholder="@tumarca" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="mPlazo">¿Para cuándo?</label>
+        <select id="mPlazo">
+          <option>Lo antes posible</option>
+          <option>Este mes</option>
+          <option>En 1 a 3 meses</option>
+          <option>Solo estoy explorando</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="mObjetivo">¿Qué quieres lograr? <span style="text-transform:none;letter-spacing:0">(opcional)</span></label>
+        <textarea id="mObjetivo" placeholder="Ej. Más ventas por Instagram, lanzar un producto, grabar una cuña de radio…"></textarea>
+      </div>
+      <button type="submit" class="btn-primary">
+        <svg style="width:20px;height:20px" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
+        Enviar por WhatsApp
+      </button>
+      <p class="form-note">Se abrirá WhatsApp con tu solicitud para <b>+58 412 960 9728</b>. Tus datos solo se usan para responderte.</p>
+    </form>
+  </div>
+</section>
+
 <!-- CTA FINAL -->
 <section class="cta-section">
   <span class="section-tag">¿Lista para empezar?</span>
@@ -682,12 +804,13 @@
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
     Escríbeme ahora por WhatsApp
   </a>
+  <span class="cta-phone">o llama al <a href="tel:+584129609728">+58 412 960 9728</a></span>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Dulce María <span>Rujano</span></div>
-  <p>© 2025 · Comunicación Estratégica</p>
+  <p>© 2025 · Comunicación Estratégica · <a href="tel:+584129609728" style="color:inherit">+58 412 960 9728</a></p>
   <div class="footer-links">
     <a href="#servicios">Servicios</a>
     <a href="#testimonios">Testimonios</a>
@@ -710,6 +833,35 @@
   document.getElementById('prevBtn').addEventListener('click', () => {
     carousel.scrollBy({ left: -284, behavior: 'smooth' });
   });
+
+  // Formulario → mensaje de WhatsApp con formato de captación
+  document.getElementById('marcaForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const val = id => document.getElementById(id).value.trim();
+    const servicios = [...document.querySelectorAll('input[name="serv"]:checked')].map(c => c.value);
+    const servError = document.getElementById('servError');
+    servError.style.display = servicios.length ? 'none' : 'block';
+    const nombre = document.getElementById('mNombre');
+    if (!servicios.length) { document.getElementById('sv1').focus(); return; }
+    if (!nombre.value.trim()) { nombre.focus(); nombre.reportValidity(); return; }
+    const lineas = [
+      '📋 *SOLICITUD DESDE LA WEB*',
+      '_Comunicación estratégica · Marca_',
+      '',
+      '👤 *Nombre:* ' + nombre.value.trim(),
+    ];
+    if (val('mMarca')) lineas.push('🏢 *Marca:* ' + val('mMarca'));
+    if (val('mRubro')) lineas.push('🏷️ *Rubro:* ' + val('mRubro'));
+    if (val('mRedes')) lineas.push('📱 *Redes / web:* ' + val('mRedes'));
+    lineas.push('', '✨ *Servicios de interés:*');
+    servicios.forEach(sv => lineas.push('• ' + sv));
+    lineas.push('', '⏱️ *Para cuándo:* ' + val('mPlazo'));
+    if (val('mObjetivo')) lineas.push('', '🎯 *Objetivo:*', val('mObjetivo'));
+    window.open('https://wa.me/584129609728?text=' + encodeURIComponent(lineas.join('\n')), '_blank', 'noopener');
+  });
+  document.querySelectorAll('input[name="serv"]').forEach(c => c.addEventListener('change', () => {
+    if (document.querySelector('input[name="serv"]:checked')) document.getElementById('servError').style.display = 'none';
+  }));
 
   // Fade-up on scroll
   const observer = new IntersectionObserver((entries) => {

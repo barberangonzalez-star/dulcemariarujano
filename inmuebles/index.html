@@ -297,6 +297,20 @@
     .contact-points li { display: flex; gap: 14px; align-items: flex-start; font-size: .9rem; line-height: 1.6; color: var(--text-light); }
     .contact-points li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 8px; }
 
+    .phone-card {
+      display: inline-flex; align-items: center; gap: 14px; margin-top: 32px;
+      background: var(--white); border: 1px solid var(--sage); border-radius: 16px;
+      padding: 14px 20px 14px 14px; text-decoration: none; color: var(--text);
+      transition: border-color .2s, transform .2s;
+    }
+    .phone-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .phone-card .ico { width: 44px; height: 44px; border-radius: 12px; background: var(--wa-green); color: #fff; display: flex; align-items: center; justify-content: center; }
+    .phone-card .ico svg { width: 22px; height: 22px; }
+    .phone-card small { display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-light); }
+    .phone-card strong { font-size: 1.1rem; font-weight: 500; letter-spacing: .02em; }
+    .cta-phone { display: block; margin-top: 22px; font-size: .9rem; color: rgba(250,247,242,.7); }
+    .cta-phone a { color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(250,247,242,.3); }
+
     /* ── SOBRE ─────────────────────────────────────────── */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .about-visual { position: relative; }
@@ -401,6 +415,7 @@
       .intent-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
       .intent-btn { padding: 14px; font-size: .84rem; }
       .form-card { padding: 28px 20px; }
+      .field-row { gap: 0; }
       footer { padding: 32px 16px; }
       .wa-float { bottom: 20px; right: 20px; }
     }
@@ -611,6 +626,10 @@
         <li>Te digo con honestidad en cuánto se puede vender o alquilar.</li>
         <li>Si buscas vivienda, te envío opciones que sí encajan contigo.</li>
       </ul>
+      <a class="phone-card" href="https://wa.me/584129609728" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg></span>
+        <span><small>WhatsApp y llamadas</small><strong>+58 412 960 9728</strong></span>
+      </a>
     </div>
 
     <form class="form-card fade-up" id="leadForm" novalidate>
@@ -645,15 +664,30 @@
         <label for="nombre">Tu nombre</label>
         <input id="nombre" type="text" placeholder="Nombre y apellido" autocomplete="name" required />
       </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="precio" id="precioLabel">Precio estimado</label>
+          <input id="precio" type="text" placeholder="Ej. $45.000" />
+        </div>
+        <div class="field">
+          <label for="plazo">¿Para cuándo?</label>
+          <select id="plazo">
+            <option>Lo antes posible</option>
+            <option>En 1 a 3 meses</option>
+            <option>En más de 3 meses</option>
+            <option>Solo estoy explorando</option>
+          </select>
+        </div>
+      </div>
       <div class="field">
         <label for="detalle">Detalles <span style="text-transform:none;letter-spacing:0">(opcional)</span></label>
-        <textarea id="detalle" placeholder="Habitaciones, metros, presupuesto, fecha en que lo necesitas…"></textarea>
+        <textarea id="detalle" placeholder="Habitaciones, baños, metros, estacionamiento, estado del inmueble…"></textarea>
       </div>
       <button type="submit" class="btn-primary">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
         Enviar por WhatsApp
       </button>
-      <p class="form-note">Tus datos solo se usan para responderte.</p>
+      <p class="form-note">Se abrirá WhatsApp con tu solicitud para <b>+58 412 960 9728</b>. Tus datos solo se usan para responderte.</p>
     </form>
   </div>
 </section>
@@ -721,12 +755,13 @@
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.167L2 22l4.985-1.308A9.961 9.961 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm0 18c-1.72 0-3.322-.44-4.717-1.21l-.338-.2-3.51.92.939-3.42-.22-.352A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
     Escríbeme ahora por WhatsApp
   </a>
+  <span class="cta-phone">o llama al <a href="tel:+584129609728">+58 412 960 9728</a></span>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <a href="../" class="footer-logo">Dulce María <span>Rujano</span></a>
-  <p>© 2025 · Asesoría Inmobiliaria</p>
+  <p>© 2025 · Asesoría Inmobiliaria · <a href="tel:+584129609728" style="color:inherit">+58 412 960 9728</a></p>
   <div class="footer-links">
     <a href="#servicios">Servicios</a>
     <a href="#propiedades">Propiedades</a>
@@ -757,24 +792,52 @@
   document.querySelectorAll('.prop-link').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
-      openWA('Hola Dulce, me interesa esta propiedad: ' + a.dataset.prop + '. ¿Me das más información?');
+      openWA([
+        '🏡 *CONSULTA DE PROPIEDAD*',
+        '_Desde la web · Inmuebles_',
+        '',
+        '📌 *Propiedad:* ' + a.dataset.prop,
+        '',
+        'Hola Dulce, me interesa esta propiedad. ¿Me das más información?'
+      ].join('\n'));
     });
   });
 
-  // Formulario → mensaje de WhatsApp
+  // Etiqueta de precio según la operación
+  const precioLabel = document.getElementById('precioLabel');
+  const precioInput = document.getElementById('precio');
+  const syncPrecio = () => {
+    const op = document.querySelector('input[name="op"]:checked').value;
+    const vende = op === 'Vender' || op === 'Poner en alquiler';
+    precioLabel.textContent = vende ? (op === 'Vender' ? 'Precio estimado' : 'Canon estimado / mes') : (op === 'Comprar' ? 'Presupuesto' : 'Presupuesto / mes');
+    precioInput.placeholder = op === 'Vender' || op === 'Comprar' ? 'Ej. $45.000' : 'Ej. $400';
+  };
+  document.querySelectorAll('input[name="op"]').forEach(r => r.addEventListener('change', syncPrecio));
+  document.querySelectorAll('.intent-btn').forEach(b => b.addEventListener('click', syncPrecio));
+  syncPrecio();
+
+  // Formulario → mensaje de WhatsApp con formato de captación
   document.getElementById('leadForm').addEventListener('submit', e => {
     e.preventDefault();
     const nombre = document.getElementById('nombre');
     if (!nombre.value.trim()) { nombre.focus(); nombre.reportValidity(); return; }
     const op = document.querySelector('input[name="op"]:checked').value;
-    const tipo = document.getElementById('tipo').value;
-    const zona = document.getElementById('zona').value.trim();
-    const detalle = document.getElementById('detalle').value.trim();
-    const frases = { 'Vender': 'Quiero vender un inmueble', 'Poner en alquiler': 'Quiero poner en alquiler un inmueble', 'Comprar': 'Busco comprar vivienda', 'Alquilar': 'Busco vivienda en alquiler' };
-    let msg = 'Hola Dulce, soy ' + nombre.value.trim() + '. ' + (frases[op] || op) + '.\n\n• Tipo: ' + tipo;
-    if (zona) msg += '\n• Zona: ' + zona;
-    if (detalle) msg += '\n• Detalles: ' + detalle;
-    openWA(msg);
+    const val = id => document.getElementById(id).value.trim();
+    const etiquetas = { 'Vender': 'Vender 🏷️', 'Poner en alquiler': 'Poner en alquiler 🔑', 'Comprar': 'Comprar 🏡', 'Alquilar': 'Busca alquilar 📍' };
+    const perfil = (op === 'Vender' || op === 'Poner en alquiler') ? 'Propietario' : 'Cliente buscando vivienda';
+    const lineas = [
+      '📋 *SOLICITUD DESDE LA WEB*',
+      '_Asesoría inmobiliaria · ' + perfil + '_',
+      '',
+      '👤 *Nombre:* ' + nombre.value.trim(),
+      '🎯 *Quiere:* ' + (etiquetas[op] || op),
+      '🏠 *Inmueble:* ' + val('tipo'),
+    ];
+    if (val('zona'))   lineas.push('📍 *Zona:* ' + val('zona'));
+    if (val('precio')) lineas.push('💰 *' + precioLabel.textContent + ':* ' + val('precio'));
+    lineas.push('⏱️ *Para cuándo:* ' + val('plazo'));
+    if (val('detalle')) lineas.push('', '📝 *Detalles:*', val('detalle'));
+    openWA(lineas.join('\n'));
   });
 
   // Fade-up on scroll
