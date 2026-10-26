@@ -6,30 +6,30 @@
   <title>Dulce María Rujano — Comunicadora Estratégica</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:      #FAF7F2;
-      --ivory:      #F4EFE6;
-      --blush:      #EDD9C8;
-      --rose:       #D9B8A3;
-      --sage:       #C8CEBD;
-      --warm-grey:  #9E948A;
-      --text:       #3A3330;
-      --text-light: #7A6F68;
-      --accent:     #B8906E;
+      --cream:      #F5F8F8;
+      --ivory:      #EAF0F0;
+      --blush:      #CFE5E6;
+      --rose:       #8FCACE;
+      --sage:       #DCE3E3;
+      --warm-grey:  #869090;
+      --text:       #111111;
+      --text-light: #50595A;
+      --accent:     #009BA3;
       --white:      #FFFFFF;
       --wa-green:   #25D366;
-      --shadow:     0 4px 40px rgba(58,51,48,.07);
+      --shadow:     0 4px 40px rgba(17,17,17,.07);
       --radius:     18px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background: var(--cream);
       color: var(--text);
       overflow-x: hidden;
@@ -40,16 +40,16 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 22px 6vw;
-      background: rgba(250,247,242,.88);
+      background: rgba(255,255,255,.88);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(216,184,163,.2);
+      border-bottom: 1px solid rgba(17,17,17,.08);
     }
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.25rem; font-weight: 400; letter-spacing: .04em;
       color: var(--text);
     }
-    .nav-logo span { color: var(--accent); font-style: italic; }
+    .nav-logo span { color: var(--accent); font-style: normal; }
     nav ul { list-style: none; display: flex; gap: 36px; }
     nav ul a { font-size: .82rem; text-decoration: none; color: var(--text-light); letter-spacing: .08em; text-transform: uppercase; transition: color .25s; }
     nav ul a:hover { color: var(--accent); }
@@ -78,12 +78,12 @@
     }
     .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: clamp(3rem, 5.5vw, 5.2rem);
       font-weight: 300; line-height: 1.08; letter-spacing: -.01em;
       margin-bottom: 24px;
     }
-    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero h1 em { font-style: normal; color: var(--accent); }
     .hero-desc {
       font-size: 1rem; line-height: 1.7; color: var(--text-light);
       max-width: 440px; margin-bottom: 44px;
@@ -135,7 +135,7 @@
       border: 1px solid var(--ivory);
     }
     .hero-badge-num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.7rem; font-weight: 500; color: var(--text);
       line-height: 1; display: block;
     }
@@ -143,7 +143,7 @@
     .hero-badge2 {
       position: absolute; top: 28px; right: -20px;
       background: var(--accent); border-radius: 14px;
-      padding: 14px 18px; box-shadow: 0 8px 28px rgba(184,144,110,.3);
+      padding: 14px 18px; box-shadow: 0 8px 28px rgba(0,155,163,.3);
     }
     .hero-badge2 .hero-badge-num { color: #fff; }
     .hero-badge2 .hero-badge-label { color: rgba(255,255,255,.75); }
@@ -157,7 +157,7 @@
     }
     .stat { text-align: center; }
     .stat-num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 2.4rem; font-weight: 500; color: var(--text); display: block; line-height: 1;
     }
     .stat-label { font-size: .74rem; color: var(--text-light); letter-spacing: .1em; text-transform: uppercase; margin-top: 4px; }
@@ -171,11 +171,11 @@
       margin-bottom: 14px;
     }
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: clamp(2rem, 3.5vw, 3rem);
       font-weight: 300; line-height: 1.15; margin-bottom: 18px;
     }
-    .section-title em { font-style: italic; color: var(--accent); }
+    .section-title em { font-style: normal; color: var(--accent); }
     .section-desc { font-size: .95rem; line-height: 1.75; color: var(--text-light); max-width: 520px; }
 
     /* ── SERVICES ──────────────────────────────────────── */
@@ -205,7 +205,7 @@
       margin-bottom: 22px; font-size: 1.5rem;
     }
     .service-card h3 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.3rem; font-weight: 500; margin-bottom: 10px;
     }
     .service-card p { font-size: .87rem; line-height: 1.7; color: var(--text-light); }
@@ -232,7 +232,7 @@
       width: 72px; height: 72px; border-radius: 50%;
       background: var(--ivory);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.4rem; font-weight: 500; color: var(--accent);
       border: 2px solid var(--blush);
     }
@@ -261,7 +261,7 @@
     }
     .testimonial-card::before {
       content: '"';
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 6rem; line-height: .7;
       color: var(--blush); position: absolute; top: 20px; left: 26px;
       pointer-events: none;
@@ -269,14 +269,14 @@
     .testimonial-text {
       font-size: .92rem; line-height: 1.8; color: var(--text-light);
       padding-top: 40px; margin-bottom: 24px;
-      font-style: italic;
+      font-style: normal;
     }
     .testimonial-author { display: flex; align-items: center; gap: 14px; }
     .author-avatar {
       width: 44px; height: 44px; border-radius: 50%;
       background: var(--ivory); border: 2px solid var(--blush);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1rem; font-weight: 500; color: var(--accent);
       flex-shrink: 0;
     }
@@ -333,7 +333,7 @@
       padding: 13px 16px; transition: border-color .2s, box-shadow .2s;
     }
     .field textarea { min-height: 96px; resize: vertical; }
-    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(184,144,110,.15); }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,155,163,.15); }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; }
     .chips input { position: absolute; opacity: 0; pointer-events: none; }
@@ -361,8 +361,8 @@
     .phone-card .ico svg { width: 22px; height: 22px; }
     .phone-card small { display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-light); }
     .phone-card strong { font-size: 1.1rem; font-weight: 500; letter-spacing: .02em; }
-    .cta-phone { display: block; margin-top: 22px; font-size: .9rem; color: rgba(250,247,242,.7); }
-    .cta-phone a { color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(250,247,242,.3); }
+    .cta-phone { display: block; margin-top: 22px; font-size: .9rem; color: rgba(255,255,255,.7); }
+    .cta-phone a { color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.3); }
     @media (max-width: 960px) { .form-wrap { grid-template-columns: 1fr; gap: 48px; } }
     @media (max-width: 560px) { .field-row { grid-template-columns: 1fr; gap: 0; } .form-card { padding: 28px 20px; } }
 
@@ -374,7 +374,7 @@
     .cta-section .section-tag { color: var(--blush); }
     .cta-section .section-title { color: var(--cream); }
     .cta-section .section-title em { color: var(--blush); }
-    .cta-desc { color: rgba(250,247,242,.65); font-size: .95rem; line-height: 1.7; max-width: 500px; margin: 0 auto 44px; }
+    .cta-desc { color: rgba(255,255,255,.65); font-size: .95rem; line-height: 1.7; max-width: 500px; margin: 0 auto 44px; }
     .btn-wa-lg {
       display: inline-flex; align-items: center; gap: 12px;
       background: var(--wa-green); color: #fff;
@@ -394,13 +394,13 @@
       flex-wrap: wrap; gap: 16px;
     }
     .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.1rem; color: var(--cream); letter-spacing: .04em;
     }
-    .footer-logo span { color: var(--blush); font-style: italic; }
-    footer p { font-size: .76rem; color: rgba(250,247,242,.4); }
+    .footer-logo span { color: var(--blush); font-style: normal; }
+    footer p { font-size: .76rem; color: rgba(255,255,255,.4); }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: .76rem; color: rgba(250,247,242,.45); text-decoration: none; transition: color .2s; }
+    .footer-links a { font-size: .76rem; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
     .footer-links a:hover { color: var(--blush); }
 
     /* ── FLOATING WA BTN ───────────────────────────────── */
@@ -453,13 +453,50 @@
       .hero { padding-left: 5vw; padding-right: 5vw; }
       nav { padding: 18px 5vw; }
     }
+  
+    /* ── RUJANO IDENTITY ───────────────────────────────── */
+    .nav-logo img { display: block; height: 38px; width: auto; }
+    .footer-logo img { display: block; height: 44px; width: auto; }
+    .hero h1, h1 { font-weight: 600; letter-spacing: -.025em; line-height: 1.05; }
+    .hero h1 { font-size: clamp(2.5rem, 4.6vw, 4.2rem); }
+    .section-title { font-weight: 600; letter-spacing: -.02em; font-size: clamp(1.8rem, 3vw, 2.6rem); }
+    .service-card h3, .choice h2 { font-weight: 600; letter-spacing: -.01em; }
+    .section-tag, .hero-tag, .eyebrow, .choice-tag { letter-spacing: .28em; font-weight: 500; }
+    .hero-img-frame { aspect-ratio: 1; }
+    .hero-img-frame::before {
+      content: ''; position: absolute; inset: -16px; border-radius: 50%; pointer-events: none;
+      border: 6px solid transparent; border-left-color: var(--accent); border-bottom-color: var(--accent);
+      transform: rotate(25deg);
+    }
+    .hero-img-blob, .hero-img { aspect-ratio: 1; border-radius: 50%; border: 0; background: var(--text); }
+    .hero-img-blob img, .hero-img img { object-position: center 30%; }
+
+    /* ── MOBILE ────────────────────────────────────────── */
+    .nav-cta .long { display: inline; }
+    .nav-cta .short { display: none; }
+    @media (max-width: 560px) {
+      nav { padding: 12px 16px; gap: 12px; }
+      .nav-logo img { height: 30px; }
+      .nav-cta { padding: 11px 16px; font-size: .72rem; letter-spacing: .08em; white-space: nowrap; }
+      .nav-cta .long { display: none; }
+      .nav-cta .short { display: inline; }
+      .hero-tag { letter-spacing: .14em; font-size: .7rem; }
+      .section-tag, .hero-badge-label, .prop-badge, .phone-card small { font-size: .75rem; }
+      .section-tag { letter-spacing: .2em; }
+      .hero-img-frame { max-width: 260px; }
+      .hero-img-frame::before { inset: -10px; border-width: 4px; }
+      .btn-secondary, .prop-link { display: inline-block; padding: 12px 0; }
+      .footer-links { flex-wrap: wrap; gap: 4px 20px; }
+      .footer-links a { display: inline-block; padding: 10px 0; }
+      .wa-float { width: 54px; height: 54px; bottom: 18px; right: 16px; }
+    }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="../" class="nav-logo" style="text-decoration:none">Dulce María <span>Rujano</span></a>
+  <a href="../" class="nav-logo"><img src="../img/rujano-logo-negro.png" width="900" height="246" alt="Rujano Comunicaciones · Dulce María Rujano" /></a>
   <ul>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#clientes">Clientes</a></li>
@@ -491,11 +528,7 @@
   <div class="hero-visual">
     <div class="hero-img-frame">
       <div class="hero-img-blob">
-        <!-- Reemplaza la imagen por: <img src="tu-foto.jpg" alt="Dulce María Rujano" /> -->
-        <div class="hero-img-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          <span>Tu foto aquí</span>
-        </div>
+        <img src="../img/dulce.png" width="400" height="400" alt="Dulce María Rujano" fetchpriority="high" />
       </div>
       <div class="hero-badge">
         <span class="hero-badge-num">+10</span>
@@ -809,7 +842,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Dulce María <span>Rujano</span></div>
+  <div class="footer-logo"><img src="../img/rujano-logo-color.png" width="900" height="253" alt="Rujano Comunicaciones" /></div>
   <p>© 2025 · Comunicación Estratégica · <a href="tel:+584129609728" style="color:inherit">+58 412 960 9728</a></p>
   <div class="footer-links">
     <a href="#servicios">Servicios</a>

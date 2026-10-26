@@ -7,27 +7,27 @@
   <meta name="description" content="Dulce María Rujano — Comunicación estratégica para tu marca y asesoría inmobiliaria para comprar, vender o alquilar tu vivienda." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:      #FAF7F2;
-      --ivory:      #F4EFE6;
-      --blush:      #EDD9C8;
-      --sage:       #C8CEBD;
-      --warm-grey:  #9E948A;
-      --text:       #3A3330;
-      --text-light: #7A6F68;
-      --accent:     #B8906E;
-      --olive:      #6F7C5E;
+      --cream:      #F5F8F8;
+      --ivory:      #EAF0F0;
+      --blush:      #CFE5E6;
+      --sage:       #DCE3E3;
+      --warm-grey:  #869090;
+      --text:       #111111;
+      --text-light: #50595A;
+      --accent:     #009BA3;
+      --olive:      #111111;
       --white:      #FFFFFF;
-      --shadow:     0 4px 40px rgba(58,51,48,.07);
+      --shadow:     0 4px 40px rgba(17,17,17,.07);
       --radius:     22px;
     }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background: var(--cream);
       color: var(--text);
       min-height: 100svh;
@@ -55,7 +55,7 @@
       box-shadow: var(--shadow);
       display: flex; align-items: center; justify-content: center;
       overflow: hidden; margin-bottom: 28px;
-      font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: var(--accent);
+      font-family: 'Montserrat', sans-serif; font-size: 2.4rem; color: var(--accent);
     }
     .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -64,11 +64,11 @@
       color: var(--warm-grey); margin-bottom: 14px;
     }
     h1 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: clamp(2.6rem, 6vw, 4.4rem);
       font-weight: 300; line-height: 1.05; margin-bottom: 16px;
     }
-    h1 em { font-style: italic; color: var(--accent); }
+    h1 em { font-style: normal; color: var(--accent); }
     .lead {
       font-size: 1rem; line-height: 1.7; color: var(--text-light);
       max-width: 480px; margin-bottom: 52px;
@@ -91,7 +91,7 @@
       content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
       background: var(--c); transform: scaleX(0); transform-origin: left; transition: transform .35s;
     }
-    .choice:hover, .choice:focus-visible { transform: translateY(-6px); box-shadow: 0 14px 50px rgba(58,51,48,.12); border-color: var(--c-soft); }
+    .choice:hover, .choice:focus-visible { transform: translateY(-6px); box-shadow: 0 14px 50px rgba(17,17,17,.12); border-color: var(--c-soft); }
     .choice:hover::after, .choice:focus-visible::after { transform: scaleX(1); }
     .choice:focus-visible { outline: 2px solid var(--c); outline-offset: 3px; }
     .choice.marca     { --c: var(--accent); --c-soft: var(--blush); }
@@ -105,7 +105,7 @@
     .choice-icon svg { width: 26px; height: 26px; }
     .choice-tag { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--c); margin-bottom: 8px; }
     .choice h2 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.75rem; font-weight: 400; line-height: 1.15; margin-bottom: 12px;
     }
     .choice p { font-size: .88rem; line-height: 1.65; color: var(--text-light); margin-bottom: 26px; }
@@ -133,13 +133,35 @@
       .choice { padding: 28px 24px 26px; }
       .lead { margin-bottom: 36px; }
     }
+  
+    .brand-logo { width: min(260px, 70vw); height: auto; margin-bottom: 40px; }
+    .avatar { border: 0; outline: 4px solid var(--accent); outline-offset: 4px; background: var(--text); }
+    body::before, body::after { background: none; border: 2px solid var(--blush); filter: none; opacity: .8; }
+
+    /* ── RUJANO IDENTITY ───────────────────────────────── */
+    .nav-logo img { display: block; height: 38px; width: auto; }
+    .footer-logo img { display: block; height: 44px; width: auto; }
+    .hero h1, h1 { font-weight: 600; letter-spacing: -.025em; line-height: 1.05; }
+    .hero h1 { font-size: clamp(2.5rem, 4.6vw, 4.2rem); }
+    .section-title { font-weight: 600; letter-spacing: -.02em; font-size: clamp(1.8rem, 3vw, 2.6rem); }
+    .service-card h3, .choice h2 { font-weight: 600; letter-spacing: -.01em; }
+    .section-tag, .hero-tag, .eyebrow, .choice-tag { letter-spacing: .28em; font-weight: 500; }
+    .hero-img-frame { aspect-ratio: 1; }
+    .hero-img-frame::before {
+      content: ''; position: absolute; inset: -16px; border-radius: 50%; pointer-events: none;
+      border: 6px solid transparent; border-left-color: var(--accent); border-bottom-color: var(--accent);
+      transform: rotate(25deg);
+    }
+    .hero-img-blob, .hero-img { aspect-ratio: 1; border-radius: 50%; border: 0; background: var(--text); }
+    .hero-img-blob img, .hero-img img { object-position: center 30%; }
+    @media (max-width: 560px) { .eyebrow, .choice-tag { font-size: .75rem; letter-spacing: .18em; } .brand-logo { margin-bottom: 28px; } }
   </style>
 </head>
 <body>
 
 <main>
-  <!-- Reemplaza por: <img src="dulce.jpg" alt="Dulce María Rujano" /> -->
-  <div class="avatar fade-up">DM</div>
+  <img class="brand-logo fade-up" src="img/rujano-logo-negro.png" width="900" height="246" alt="Rujano Comunicaciones" />
+  <div class="avatar fade-up d1"><img src="img/dulce.png" width="400" height="400" alt="Dulce María Rujano" /></div>
 
   <p class="eyebrow fade-up d1">Bienvenido · Bienvenida</p>
   <h1 class="fade-up d1">Hola, soy <em>Dulce María</em></h1>
