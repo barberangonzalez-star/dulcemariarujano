@@ -71,36 +71,116 @@
     h1 em { font-style: normal; color: var(--accent); }
     .lead {
       font-size: 1rem; line-height: 1.7; color: var(--text-light);
-      max-width: 480px; margin-bottom: 52px;
+      max-width: 480px; margin-bottom: 0;
     }
 
+    /* ── INTRO + CARACAS SKYLINE ───────────────────────── */
+    main { position: relative; overflow-x: clip; }
+    .intro { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .skyline {
+      position: relative; z-index: 0; pointer-events: none; flex: none;
+      width: 100vw; height: clamp(200px, 21vw, 320px); margin: 0 0 -96px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 10%, #000 62%, transparent 100%);
+              mask-image: linear-gradient(to bottom, transparent 0, #000 10%, #000 62%, transparent 100%);
+    }
+    .skyline svg { display: block; width: 100%; height: 100%; }
+    .sk-far   { fill: #E3EBEB; }
+    .sk-near  { fill: #D5E1E2; }
+    .sk-b1    { fill: #C8D7D8; }
+    .sk-b2    { fill: #B9CBCD; }
+    .sk-sun   { fill: var(--accent); opacity: .1; }
+    .sk-cable { stroke: #9FB2B4; stroke-width: 1.2; fill: none; }
+    .sk-cabin rect { fill: var(--accent); }
+    .sk-cabin line { stroke: #8A9C9E; stroke-width: 1.2; }
+    .sk-win   { fill: var(--accent); opacity: .15; }
+    .sk-cloud { fill: #FFFFFF; opacity: .85; }
+    .sk-bird path { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .sk-rise  { animation: skRise 1.4s cubic-bezier(.2,.8,.2,1) both; }
+    .sk-rise.l2 { animation-delay: .15s; } .sk-rise.l3 { animation-delay: .3s; }
+    @keyframes skRise { from { opacity: 0; transform: translateY(40px); } }
+    .sk-cabin   { animation: skCable 16s ease-in-out infinite alternate; }
+    .sk-cabin.c2 { animation-delay: -16s; }
+    @keyframes skCable { from { transform: translate(640px, 262px); } to { transform: translate(866px, 62px); } }
+    .sk-win     { animation: skTwinkle 4s ease-in-out infinite; }
+    @keyframes skTwinkle { 0%, 100% { opacity: .15; } 50% { opacity: .9; } }
+    .sk-cloud   { animation: skDrift 70s linear infinite; }
+    .sk-cloud.k2 { animation-duration: 95s; animation-delay: -50s; }
+    @keyframes skDrift { from { transform: translateX(-260px); } to { transform: translateX(1700px); } }
+    .sk-bird    { animation: skFly 22s linear infinite; }
+    .sk-bird.f2 { animation-delay: -1.2s; } .sk-bird.f3 { animation-delay: -11s; }
+    @keyframes skFly { from { transform: translate(1500px, 30px); } to { transform: translate(-120px, -10px); } }
+    .sk-bird path { transform-box: fill-box; transform-origin: center; animation: skFlap .5s ease-in-out infinite alternate; }
+    @keyframes skFlap { to { transform: scaleY(-.45); } }
+
+    /* ── 3D CARDS ──────────────────────────────────────── */
     .choices {
+      position: relative; z-index: 1;
       display: grid; grid-template-columns: repeat(2, minmax(0, 340px));
       gap: 24px; width: 100%; justify-content: center;
+      perspective: 1100px;
     }
     .choice {
-      position: relative; overflow: hidden;
+      --tx: 0; --ty: 0; --lift: 0; --gx: 50%; --gy: 0%;
+      position: relative;
       display: flex; flex-direction: column; align-items: flex-start; text-align: left;
       background: var(--white); border: 1px solid var(--ivory);
       border-radius: var(--radius); padding: 36px 32px 32px;
       text-decoration: none; color: var(--text);
-      box-shadow: var(--shadow);
-      transition: transform .3s, box-shadow .3s, border-color .3s;
+      transform-style: preserve-3d;
+      transform: rotateX(calc(var(--ty) * -13deg)) rotateY(calc(var(--tx) * 15deg)) translateZ(calc(var(--lift) * 24px));
+      box-shadow:
+        calc(var(--tx) * -24px) calc(18px + var(--ty) * -16px + var(--lift) * 14px) calc(44px + var(--lift) * 24px) rgba(17,17,17,.09),
+        0 2px 6px rgba(17,17,17,.04);
+      transition: transform .6s cubic-bezier(.2,.8,.2,1), box-shadow .6s cubic-bezier(.2,.8,.2,1), border-color .3s;
+      -webkit-tap-highlight-color: transparent;
     }
-    .choice::after {
+    .choice.is-active { --lift: 1; border-color: var(--c-soft); transition-duration: .15s, .15s, .3s; }
+    .choice.is-scrolling { transition-duration: .25s, .25s, .3s; }
+    .choice:focus-visible { --lift: 1; outline: 2px solid var(--c); outline-offset: 3px; }
+    .choice.marca     { --c: var(--accent); --c-soft: var(--blush); --glow: rgba(0,155,163,.22); }
+    .choice.inmuebles { --c: var(--olive);  --c-soft: var(--sage);  --glow: rgba(0,155,163,.12); }
+
+    /* light that follows the finger/cursor, plus the coloured bottom bar */
+    .choice-shine {
+      position: absolute; inset: 0; border-radius: inherit; overflow: hidden; pointer-events: none;
+      background: radial-gradient(circle at var(--gx) var(--gy), var(--glow), transparent 62%);
+      opacity: calc(.35 + var(--lift) * .65); transition: opacity .4s;
+    }
+    .choice-shine::after {
       content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
-      background: var(--c); transform: scaleX(0); transform-origin: left; transition: transform .35s;
+      background: var(--c); transform: scaleX(var(--lift)); transform-origin: left; transition: transform .35s;
     }
-    .choice:hover, .choice:focus-visible { transform: translateY(-6px); box-shadow: 0 14px 50px rgba(17,17,17,.12); border-color: var(--c-soft); }
-    .choice:hover::after, .choice:focus-visible::after { transform: scaleX(1); }
-    .choice:focus-visible { outline: 2px solid var(--c); outline-offset: 3px; }
-    .choice.marca     { --c: var(--accent); --c-soft: var(--blush); }
-    .choice.inmuebles { --c: var(--olive);  --c-soft: var(--sage); }
+    /* depth layers: content floats above the card when it tilts */
+    .choice > :not(.choice-shine) { transform: translateZ(var(--z, 0)); }
+    .choice-icon { --z: 60px; }
+    .choice-tag  { --z: 28px; }
+    .choice h2   { --z: 44px; }
+    .choice p    { --z: 20px; }
+    .choice-go   { --z: 52px; }
+
+    .card-in { opacity: 0; animation: cardIn 1.1s cubic-bezier(.2,.8,.2,1) forwards; }
+    .card-in.d4 { animation-delay: .44s; }
+    .card-in.d3 { animation-delay: .3s; }
+    @keyframes cardIn {
+      from { opacity: 0; translate: 0 48px; rotate: x 38deg; }
+      to   { opacity: 1; translate: 0 0;    rotate: x 0deg; }
+    }
+    /* phones: no hover, so the cards breathe gently on their own */
+    @media (hover: none) {
+      .card-in { animation: cardIn 1.1s cubic-bezier(.2,.8,.2,1) forwards, sway 7s ease-in-out 1.5s infinite; }
+      .card-in.d4 { animation-delay: .44s, 3.2s; }
+    }
+    @keyframes sway {
+      0%, 100% { rotate: y 0deg; }
+      25%      { rotate: y 7deg; }
+      75%      { rotate: y -7deg; }
+    }
 
     .choice-icon {
       width: 56px; height: 56px; border-radius: 16px;
       display: flex; align-items: center; justify-content: center;
       background: var(--c-soft); color: var(--c); margin-bottom: 24px;
+      box-shadow: 0 10px 22px -10px var(--c);
     }
     .choice-icon svg { width: 26px; height: 26px; }
     .choice-tag { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--c); margin-bottom: 8px; }
@@ -125,13 +205,20 @@
     .fade-up { opacity: 0; transform: translateY(20px); animation: fadeUp .7s ease forwards; }
     .d1 { animation-delay: .08s; } .d2 { animation-delay: .16s; } .d3 { animation-delay: .24s; } .d4 { animation-delay: .32s; }
     @keyframes fadeUp { to { opacity: 1; transform: none; } }
-    @media (prefers-reduced-motion: reduce) { .fade-up { animation: none; opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up, .card-in { animation: none; opacity: 1; transform: none; }
+      .skyline * { animation: none !important; }
+      .sk-cabin { transform: translate(760px, 156px); } .sk-cabin.c2 { display: none; }
+      .sk-bird { display: none; }
+      .choice { transform: none; }
+    }
 
     @media (max-width: 720px) {
       main { padding: 48px 16px 32px; }
+      .skyline { height: 200px; margin: -16px 0 -76px; }
       .choices { grid-template-columns: 1fr; max-width: 420px; }
       .choice { padding: 28px 24px 26px; }
-      .lead { margin-bottom: 36px; }
+      .lead { margin-bottom: 0; }
     }
   
     .brand-logo { width: min(260px, 70vw); height: auto; margin-bottom: 40px; }
@@ -160,15 +247,94 @@
 <body>
 
 <main>
-  <img class="brand-logo fade-up" src="img/rujano-logo-negro.png" width="900" height="246" alt="Rujano Comunicaciones" />
-  <div class="avatar fade-up d1"><img src="img/dulce.png" width="400" height="400" alt="Dulce María Rujano" /></div>
+  <div class="intro">
+    <img class="brand-logo fade-up" src="img/rujano-logo-negro.png" width="900" height="246" alt="Rujano Comunicaciones" />
+    <div class="avatar fade-up d1"><img src="img/dulce.png" width="400" height="400" alt="Dulce María Rujano" /></div>
 
-  <p class="eyebrow fade-up d1">Bienvenido · Bienvenida</p>
-  <h1 class="fade-up d1">Hola, soy <em>Dulce María</em></h1>
-  <p class="lead fade-up d2">Cuéntame qué necesitas y te llevo al lugar indicado.</p>
+    <p class="eyebrow fade-up d1">Bienvenido · Bienvenida</p>
+    <h1 class="fade-up d1">Hola, soy <em>Dulce María</em></h1>
+    <p class="lead fade-up d2">Cuéntame qué necesitas y te llevo al lugar indicado.</p>
+    <!-- Caracas: El Ávila with Hotel Humboldt, the cable car, Parque Central towers and Torre de David -->
+    <div class="skyline" aria-hidden="true">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" focusable="false">
+        <circle class="sk-sun sk-rise" cx="1060" cy="96" r="54" />
+        <g class="sk-cloud"><ellipse cx="0" cy="70" rx="58" ry="14" /><ellipse cx="26" cy="60" rx="30" ry="14" /></g>
+        <g class="sk-cloud k2"><ellipse cx="0" cy="112" rx="72" ry="13" /><ellipse cx="-20" cy="102" rx="34" ry="13" /></g>
+
+        <path class="sk-far sk-rise" d="M0 200 C140 170 250 140 380 128 C480 118 560 104 660 92 C760 80 830 70 900 74 C1000 80 1080 96 1180 112 C1290 128 1370 140 1440 150 V320 H0 Z" />
+        <g class="sk-rise l2">
+          <path class="sk-near" d="M0 236 C120 214 220 188 330 176 C430 166 520 140 610 118 C700 96 790 70 860 60 C900 54 930 62 980 80 C1060 108 1140 126 1240 150 C1320 168 1390 178 1440 184 V320 H0 Z" />
+          <!-- Hotel Humboldt -->
+          <rect class="sk-b2" x="868" y="20" width="14" height="42" rx="3" />
+          <rect class="sk-b2" x="874" y="10" width="2" height="12" />
+          <!-- Teleférico -->
+          <line class="sk-cable" x1="640" y1="262" x2="868" y2="58" />
+          <g class="sk-cabin"><line x1="0" y1="0" x2="0" y2="8" /><rect x="-7" y="8" width="14" height="11" rx="3" /></g>
+          <g class="sk-cabin c2"><line x1="0" y1="0" x2="0" y2="8" /><rect x="-7" y="8" width="14" height="11" rx="3" /></g>
+        </g>
+
+        <g class="sk-rise l3">
+          <rect class="sk-b1" x="0"    y="250" width="60" height="70" />
+          <rect class="sk-b2" x="55"   y="262" width="40" height="58" />
+          <rect class="sk-b1" x="92"   y="230" width="70" height="90" />
+          <rect class="sk-b2" x="160"  y="248" width="46" height="72" />
+          <rect class="sk-b1" x="205"  y="214" width="58" height="106" />
+          <rect class="sk-b2" x="262"  y="240" width="40" height="80" />
+          <rect class="sk-b1" x="300"  y="200" width="64" height="120" />
+          <rect class="sk-b2" x="362"  y="232" width="46" height="88" />
+          <!-- Torres de Parque Central -->
+          <rect class="sk-b2" x="410"  y="108" width="30" height="212" />
+          <rect class="sk-b2" x="414"  y="96"  width="22" height="14" />
+          <rect class="sk-b2" x="424"  y="80"  width="2"  height="18" />
+          <rect class="sk-b2" x="452"  y="108" width="30" height="212" />
+          <rect class="sk-b2" x="456"  y="96"  width="22" height="14" />
+          <rect class="sk-b2" x="466"  y="80"  width="2"  height="18" />
+          <rect class="sk-b1" x="486"  y="236" width="54" height="84" />
+          <rect class="sk-b2" x="538"  y="212" width="44" height="108" />
+          <!-- Torre de David -->
+          <rect class="sk-b2" x="588"  y="142" width="42" height="178" />
+          <rect class="sk-b2" x="596"  y="128" width="26" height="16" />
+          <rect class="sk-b1" x="632"  y="226" width="56" height="94" />
+          <rect class="sk-b2" x="690"  y="250" width="36" height="70" />
+          <rect class="sk-b1" x="724"  y="204" width="70" height="116" />
+          <rect class="sk-b2" x="792"  y="236" width="44" height="84" />
+          <rect class="sk-b1" x="834"  y="214" width="60" height="106" />
+          <rect class="sk-b2" x="892"  y="246" width="38" height="74" />
+          <rect class="sk-b1" x="928"  y="194" width="66" height="126" />
+          <rect class="sk-b2" x="992"  y="226" width="46" height="94" />
+          <rect class="sk-b1" x="1036" y="240" width="58" height="80" />
+          <rect class="sk-b2" x="1092" y="206" width="40" height="114" />
+          <rect class="sk-b1" x="1130" y="232" width="70" height="88" />
+          <rect class="sk-b2" x="1198" y="252" width="48" height="68" />
+          <rect class="sk-b1" x="1244" y="218" width="60" height="102" />
+          <rect class="sk-b2" x="1302" y="242" width="44" height="78" />
+          <rect class="sk-b1" x="1344" y="228" width="96" height="92" />
+          <!-- lit windows -->
+          <rect class="sk-win" x="418" y="130" width="5" height="6" style="animation-delay:-.4s" />
+          <rect class="sk-win" x="428" y="168" width="5" height="6" style="animation-delay:-2.1s" />
+          <rect class="sk-win" x="418" y="214" width="5" height="6" style="animation-delay:-3.3s" />
+          <rect class="sk-win" x="460" y="146" width="5" height="6" style="animation-delay:-1.2s" />
+          <rect class="sk-win" x="470" y="196" width="5" height="6" style="animation-delay:-2.8s" />
+          <rect class="sk-win" x="460" y="250" width="5" height="6" style="animation-delay:-.9s" />
+          <rect class="sk-win" x="598" y="166" width="5" height="6" style="animation-delay:-1.7s" />
+          <rect class="sk-win" x="614" y="208" width="5" height="6" style="animation-delay:-3.6s" />
+          <rect class="sk-win" x="740" y="226" width="5" height="6" style="animation-delay:-2.4s" />
+          <rect class="sk-win" x="944" y="218" width="5" height="6" style="animation-delay:-.2s" />
+          <rect class="sk-win" x="318" y="222" width="5" height="6" style="animation-delay:-3s" />
+          <rect class="sk-win" x="1102" y="230" width="5" height="6" style="animation-delay:-1.5s" />
+        </g>
+
+        <!-- guacamayas crossing the sky -->
+        <g class="sk-bird"><path d="M0 70 Q6 64 12 70 Q18 64 24 70" /></g>
+        <g class="sk-bird f2"><path d="M34 86 Q39 81 44 86 Q49 81 54 86" /></g>
+        <g class="sk-bird f3"><path d="M0 50 Q5 45 10 50 Q15 45 20 50" /></g>
+      </svg>
+    </div>
+  </div>
 
   <div class="choices">
-    <a href="marca/" class="choice marca fade-up d3">
+    <a href="marca/" class="choice marca card-in d3">
+      <span class="choice-shine" aria-hidden="true"></span>
       <div class="choice-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l15-6v14L3 13z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
       </div>
@@ -180,7 +346,8 @@
       </span>
     </a>
 
-    <a href="inmuebles/" class="choice inmuebles fade-up d4">
+    <a href="inmuebles/" class="choice inmuebles card-in d4">
+      <span class="choice-shine" aria-hidden="true"></span>
       <div class="choice-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9v11h14V9"/><path d="M10 20v-6h4v6"/></svg>
       </div>
@@ -197,6 +364,82 @@
 <footer>
   © 2025 Dulce María Rujano · WhatsApp <a href="https://wa.me/584129609728" target="_blank" rel="noopener">+58 412 960 9728</a>
 </footer>
+
+<script>
+  // 3D tilt: follows the cursor on desktop; on phones it reacts to scroll, touch and (where allowed) the gyroscope.
+  (() => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const cards = [...document.querySelectorAll('.choice')];
+    const touch = matchMedia('(hover: none)').matches;
+    const clamp = v => Math.max(-1, Math.min(1, v));
+    const state = cards.map(() => ({ px: null, py: null, sy: 0, gx: 0 }));
+
+    const paint = i => {
+      const s = state[i], card = cards[i];
+      const x = s.px ?? s.gx, y = s.py ?? s.sy;
+      card.style.setProperty('--tx', x.toFixed(3));
+      card.style.setProperty('--ty', y.toFixed(3));
+      card.style.setProperty('--gx', ((x + 1) * 50).toFixed(1) + '%');
+      card.style.setProperty('--gy', ((y + 1) * 50).toFixed(1) + '%');
+    };
+
+    cards.forEach((card, i) => {
+      let rect = null, frame = 0;
+      const aim = e => {
+        rect = rect || card.getBoundingClientRect();
+        state[i].px = clamp(((e.clientX - rect.left) / rect.width) * 2 - 1);
+        state[i].py = clamp(((e.clientY - rect.top) / rect.height) * 2 - 1);
+        if (!frame) frame = requestAnimationFrame(() => { frame = 0; paint(i); });
+      };
+      const rest = () => {
+        rect = null; state[i].px = state[i].py = null;
+        card.classList.remove('is-active'); paint(i);
+      };
+      card.addEventListener('pointerenter', e => { card.classList.add('is-active'); aim(e); });
+      card.addEventListener('pointerdown', e => { card.classList.add('is-active'); aim(e); });
+      card.addEventListener('pointermove', aim);
+      ['pointerleave', 'pointercancel', 'pointerup'].forEach(t => card.addEventListener(t, e => {
+        if (t === 'pointerup' && e.pointerType === 'mouse') return;
+        rest();
+      }));
+    });
+
+    if (!touch) return;
+
+    // Scroll: cards lean back as they come up the screen and settle in the middle.
+    let ticking = false, idle = 0;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const mid = innerHeight / 2;
+        cards.forEach((card, i) => {
+          const r = card.getBoundingClientRect();
+          state[i].sy = clamp((r.top + r.height / 2 - mid) / mid) * 0.8;
+          card.classList.add('is-scrolling');
+          paint(i);
+        });
+        clearTimeout(idle);
+        idle = setTimeout(() => cards.forEach(c => c.classList.remove('is-scrolling')), 200);
+      });
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll, { passive: true });
+    onScroll();
+
+    // Gyroscope: only where no permission prompt is needed (Android); iOS keeps scroll + touch.
+    if ('DeviceOrientationEvent' in window && typeof DeviceOrientationEvent.requestPermission !== 'function') {
+      let gFrame = 0;
+      addEventListener('deviceorientation', e => {
+        if (e.gamma == null) return;
+        const g = clamp(e.gamma / 25) * 0.7;
+        state.forEach(s => { s.gx = g; });
+        if (!gFrame) gFrame = requestAnimationFrame(() => { gFrame = 0; cards.forEach((_, i) => paint(i)); });
+      }, { passive: true });
+    }
+  })();
+</script>
 
 </body>
 </html>
