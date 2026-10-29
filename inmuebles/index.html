@@ -205,7 +205,10 @@
     }
     .footer-logo img { display: block; height: 42px; width: auto; }
     footer p { font-size: .78rem; color: rgba(255,255,255,.5); }
-    footer p a { color: inherit; }
+    .footer-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .footer-btns a { padding: 11px 20px; font-size: .84rem; box-shadow: none; }
+    .footer-btns .btn-call { background: transparent; color: var(--white); border-color: rgba(255,255,255,.3); }
+    .footer-btns .btn-call:hover { color: var(--blush); border-color: var(--blush); }
     .footer-links { display: flex; gap: 4px 22px; flex-wrap: wrap; }
     .footer-links a { display: inline-block; padding: 8px 0; font-size: .78rem; color: rgba(255,255,255,.55); text-decoration: none; }
     .footer-links a:hover { color: var(--blush); }
@@ -381,11 +384,14 @@
 
 <footer>
   <a href="../" class="footer-logo"><img src="../img/rujano-logo-color.png" width="900" height="253" alt="Rujano Comunicaciones" /></a>
-  <p>© 2025 · Asesoría Inmobiliaria · <a href="tel:+584129609728">+58 412 960 9728</a></p>
+  <p>© 2025 · Asesoría Inmobiliaria</p>
   <div class="footer-links">
     <a href="../">Inicio</a>
     <a href="../marca/">Impulsa tu marca</a>
-    <a href="https://wa.me/584129609728" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+  <div class="footer-btns">
+    <a href="https://wa.me/584129609728?text=Hola%20Dulce%2C%20quiero%20asesor%C3%ADa%20inmobiliaria%20%F0%9F%8F%A1" class="btn-primary" target="_blank" rel="noopener"><svg class="wa-ico"><use href="#wa"/></svg>WhatsApp</a>
+    <a href="tel:+584129609728" class="btn-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Llamar</a>
   </div>
 </footer>
 
