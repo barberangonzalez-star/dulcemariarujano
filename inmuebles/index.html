@@ -156,6 +156,70 @@
     .need p { font-size: .9rem; line-height: 1.6; color: var(--text-light); margin-bottom: 20px; }
     .need-go { margin-top: auto; font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 
+    /* ── LISTINGS ──────────────────────────────────────── */
+    #inmuebles { background: var(--cream); }
+    .props { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
+    .prop {
+      display: flex; flex-direction: column; background: var(--white);
+      border: 1px solid var(--ivory); border-radius: var(--radius); overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .props .prop:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .prop-img { position: relative; aspect-ratio: 4 / 3; background: linear-gradient(160deg, var(--blush), #9FD3D6); }
+    .prop-img svg, .prop-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .prop-badge {
+      position: absolute; top: 14px; left: 14px;
+      background: var(--white); color: var(--accent); border-radius: 50px;
+      padding: 6px 12px; font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .prop-badge.venta { background: var(--accent); color: var(--white); }
+    .prop-body { display: flex; flex-direction: column; flex: 1; padding: 20px 22px 22px; }
+    .prop-body h3 { font-size: 1.12rem; font-weight: 600; margin-bottom: 4px; }
+    .prop-loc { display: flex; align-items: center; gap: 6px; font-size: .86rem; color: var(--text-light); margin-bottom: 14px; }
+    .prop-loc svg { width: 15px; height: 15px; color: var(--accent); flex-shrink: 0; }
+    .prop-feats { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .prop-feats li { background: var(--cream); border-radius: 8px; padding: 6px 10px; font-size: .8rem; font-weight: 500; color: var(--text); }
+    .prop-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; border-top: 1px solid var(--ivory); }
+    .prop-price { font-size: .86rem; font-weight: 600; color: var(--text-light); }
+    .prop-btn {
+      display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+      background: var(--text); color: var(--white); border-radius: 50px; padding: 10px 18px;
+      font-size: .82rem; font-weight: 600; text-decoration: none; white-space: nowrap; transition: background .2s;
+    }
+    .prop-btn:hover { background: var(--accent); }
+    .prop-btn .wa-ico { width: 17px; height: 17px; }
+    .props-dots { display: none; }
+    .props-more { text-align: center; margin-top: 32px; font-size: .92rem; color: var(--text-light); }
+    .props-more a { color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blush); padding: 10px 0 2px; }
+
+    /* phones and tablets: swipeable carousel, next card peeking so it reads as "slide me" */
+    @media (max-width: 860px) {
+      .props {
+        display: flex; gap: 14px; margin: 36px -6vw 0; padding: 4px 6vw 8px;
+        overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 6vw;
+        overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      }
+      .props::-webkit-scrollbar { display: none; }
+      .prop { flex: 0 0 min(84%, 340px); scroll-snap-align: start; }
+      .props .prop:hover { transform: none; box-shadow: none; }
+      .props-dots { display: flex; justify-content: center; gap: 2px; margin-top: 8px; }
+      .props-dots button {
+        width: 32px; height: 32px; border: 0; background: none; cursor: pointer; padding: 0;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .props-dots button::before {
+        content: ''; width: 8px; height: 8px; border-radius: 50px; background: var(--sage);
+        transition: width .3s, background .3s;
+      }
+      .props-dots button[aria-current="true"]::before { width: 22px; background: var(--accent); }
+      .props-more { margin-top: 16px; }
+    }
+    @media (max-width: 560px) {
+      .props { margin: 28px -16px 0; padding: 4px 16px 8px; scroll-padding: 0 16px; }
+      .prop-body { padding: 18px 18px 20px; }
+      .prop-foot { flex-wrap: wrap; }
+    }
+
     /* ── HOW IT WORKS ──────────────────────────────────── */
     #como { background: var(--text); color: var(--white); }
     #como .section-desc { color: rgba(255,255,255,.65); }
@@ -326,6 +390,106 @@
   </div>
 </section>
 
+<!-- LISTINGS
+     Example content. To publish a real property: replace the <svg> inside .prop-img with
+     <img src="../img/inmueble-1.jpg" alt="…" width="800" height="600" loading="lazy" />,
+     then update the badge (venta / alquiler), title, zone, features and the data-prop text. -->
+<section id="inmuebles">
+  <div class="wrap">
+    <div class="center">
+      <span class="section-tag">Inmuebles</span>
+      <h2 class="section-title">Algunas <em>opciones</em></h2>
+      <p class="section-desc">Escríbeme por el que te guste y te envío fotos, video y todos los detalles.</p>
+    </div>
+
+    <ul class="props" id="props">
+      <li class="prop fade-up">
+        <div class="prop-img">
+          <span class="prop-badge venta">Venta</span>
+          <svg viewBox="0 0 400 300" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+            <circle cx="320" cy="70" r="28" fill="#fff" opacity=".55"/>
+            <rect x="0" y="252" width="400" height="48" fill="#7FC4C8"/>
+            <rect x="130" y="60" width="140" height="196" rx="4" fill="#fff"/>
+            <rect x="130" y="60" width="140" height="14" fill="#009BA3"/>
+            <g fill="#CFE5E6">
+              <rect x="146" y="88" width="26" height="22" rx="2"/><rect x="187" y="88" width="26" height="22" rx="2"/><rect x="228" y="88" width="26" height="22" rx="2"/>
+              <rect x="146" y="124" width="26" height="22" rx="2"/><rect x="187" y="124" width="26" height="22" rx="2" fill="#009BA3" opacity=".6"/><rect x="228" y="124" width="26" height="22" rx="2"/>
+              <rect x="146" y="160" width="26" height="22" rx="2"/><rect x="187" y="160" width="26" height="22" rx="2"/><rect x="228" y="160" width="26" height="22" rx="2" fill="#009BA3" opacity=".6"/>
+              <rect x="146" y="196" width="26" height="22" rx="2"/><rect x="228" y="196" width="26" height="22" rx="2"/>
+            </g>
+            <rect x="186" y="222" width="28" height="34" rx="2" fill="#111" opacity=".75"/>
+            <circle cx="88" cy="214" r="30" fill="#4FAFB4"/><rect x="85" y="230" width="6" height="26" fill="#3A8E92"/>
+            <circle cx="318" cy="222" r="22" fill="#4FAFB4"/><rect x="315" y="234" width="6" height="22" fill="#3A8E92"/>
+          </svg>
+        </div>
+        <div class="prop-body">
+          <h3>Apartamento de 3 habitaciones</h3>
+          <p class="prop-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>El Paraíso, Caracas</p>
+          <ul class="prop-feats"><li>3 hab.</li><li>2 baños</li><li>95 m²</li><li>1 puesto</li></ul>
+          <div class="prop-foot">
+            <span class="prop-price">Precio a consultar</span>
+            <a class="prop-btn" href="#" data-prop="Apartamento de 3 habitaciones en venta · El Paraíso, Caracas"><svg class="wa-ico"><use href="#wa"/></svg>Me interesa</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="prop fade-up">
+        <div class="prop-img">
+          <span class="prop-badge">Alquiler</span>
+          <svg viewBox="0 0 400 300" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+            <circle cx="80" cy="66" r="26" fill="#fff" opacity=".55"/>
+            <rect x="0" y="246" width="400" height="54" fill="#7FC4C8"/>
+            <rect x="120" y="140" width="170" height="110" fill="#fff"/>
+            <path d="M104 146 L205 72 L306 146 Z" fill="#009BA3"/>
+            <rect x="252" y="84" width="18" height="40" fill="#fff"/>
+            <rect x="188" y="184" width="34" height="66" rx="2" fill="#111" opacity=".75"/>
+            <rect x="136" y="166" width="36" height="32" rx="2" fill="#CFE5E6"/>
+            <rect x="238" y="166" width="36" height="32" rx="2" fill="#CFE5E6"/>
+            <rect x="0" y="236" width="400" height="10" fill="#4FAFB4"/>
+            <circle cx="336" cy="210" r="26" fill="#4FAFB4"/><rect x="333" y="222" width="6" height="26" fill="#3A8E92"/>
+          </svg>
+        </div>
+        <div class="prop-body">
+          <h3>Casa de 2 habitaciones</h3>
+          <p class="prop-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Santa Mónica, Caracas</p>
+          <ul class="prop-feats"><li>2 hab.</li><li>1 baño</li><li>70 m²</li><li>Patio</li></ul>
+          <div class="prop-foot">
+            <span class="prop-price">Precio a consultar</span>
+            <a class="prop-btn" href="#" data-prop="Casa de 2 habitaciones en alquiler · Santa Mónica, Caracas"><svg class="wa-ico"><use href="#wa"/></svg>Me interesa</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="prop fade-up">
+        <div class="prop-img">
+          <span class="prop-badge venta">Venta</span>
+          <svg viewBox="0 0 400 300" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+            <circle cx="330" cy="62" r="24" fill="#fff" opacity=".55"/>
+            <rect x="0" y="248" width="400" height="52" fill="#7FC4C8"/>
+            <g fill="#fff"><rect x="60" y="130" width="94" height="120"/><rect x="154" y="112" width="94" height="138"/><rect x="248" y="130" width="94" height="120"/></g>
+            <path d="M52 134 L107 92 L162 134 Z" fill="#4FAFB4"/>
+            <path d="M146 116 L201 70 L256 116 Z" fill="#009BA3"/>
+            <path d="M240 134 L295 92 L350 134 Z" fill="#4FAFB4"/>
+            <g fill="#CFE5E6"><rect x="76" y="150" width="26" height="26" rx="2"/><rect x="170" y="134" width="26" height="26" rx="2"/><rect x="206" y="134" width="26" height="26" rx="2"/><rect x="264" y="150" width="26" height="26" rx="2"/><rect x="300" y="150" width="26" height="26" rx="2"/><rect x="112" y="150" width="26" height="26" rx="2"/></g>
+            <g fill="#111" opacity=".75"><rect x="94" y="200" width="26" height="50" rx="2"/><rect x="188" y="196" width="26" height="54" rx="2"/><rect x="282" y="200" width="26" height="50" rx="2"/></g>
+          </svg>
+        </div>
+        <div class="prop-body">
+          <h3>Townhouse de 3 niveles</h3>
+          <p class="prop-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>El Hatillo, Caracas</p>
+          <ul class="prop-feats"><li>3 hab.</li><li>3 baños</li><li>160 m²</li><li>2 puestos</li></ul>
+          <div class="prop-foot">
+            <span class="prop-price">Precio a consultar</span>
+            <a class="prop-btn" href="#" data-prop="Townhouse de 3 niveles en venta · El Hatillo, Caracas"><svg class="wa-ico"><use href="#wa"/></svg>Me interesa</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="props-dots" id="propsDots" aria-hidden="true"></div>
+    <p class="props-more">¿Buscas algo distinto? <a href="https://wa.me/584129609728?text=Hola%20Dulce%2C%20%C2%BFqu%C3%A9%20otros%20inmuebles%20tienes%20disponibles%3F" target="_blank" rel="noopener">Pídeme más opciones</a></p>
+  </div>
+</section>
+
 <!-- HOW IT WORKS -->
 <section id="como">
   <div class="wrap">
@@ -419,6 +583,31 @@
     video.currentTime = 0; video.play().catch(() => {});
     soundBtn.hidden = true;
   });
+
+  // Listings: "Me interesa" opens WhatsApp with the property; on phones, dots follow the carousel
+  document.querySelectorAll('.prop-btn').forEach(a => {
+    a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hola Dulce, me interesa: ' + a.dataset.prop + '. ¿Me das más información?');
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+  const props = document.getElementById('props');
+  const dotsBox = document.getElementById('propsDots');
+  const cardsList = [...props.children];
+  const dots = cardsList.map((card, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.tabIndex = -1;
+    b.addEventListener('click', () => props.scrollTo({ left: card.offsetLeft - props.offsetLeft - parseFloat(getComputedStyle(props).scrollPaddingLeft || 0), behavior: 'smooth' }));
+    dotsBox.appendChild(b);
+    return b;
+  });
+  const markDot = () => {
+    const step = cardsList[1].offsetLeft - cardsList[0].offsetLeft || 1;
+    const atEnd = props.scrollLeft + props.clientWidth >= props.scrollWidth - 4;
+    const i = atEnd ? cardsList.length - 1 : Math.round(props.scrollLeft / step);
+    dots.forEach((d, j) => d.setAttribute('aria-current', j === i ? 'true' : 'false'));
+  };
+  let dotFrame = 0;
+  props.addEventListener('scroll', () => { if (!dotFrame) dotFrame = requestAnimationFrame(() => { dotFrame = 0; markDot(); }); }, { passive: true });
+  markDot();
 
   // Each need → preselects the option and scrolls to the form
   document.querySelectorAll('.need').forEach(btn => {
